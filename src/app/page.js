@@ -1,7 +1,14 @@
+import React from 'react';
+import Example from "./components/navbar/Navbar.js"
+
+
+
 export default function Home() {
   return (
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
+    <section>
+      <Example/>
+      
+    </section>
+    
   )
 }
