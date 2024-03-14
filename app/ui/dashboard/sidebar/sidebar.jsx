@@ -12,6 +12,11 @@ import {
     MdOutlineSettings,
     MdHelpCenter,
     MdLogout,
+    MdBook,
+    MdCalendarMonth,
+    MdQueryStats,
+    MdNote,
+    MdNotes,
 } from "react-icons/md";
 
 const menuItems = [
@@ -19,49 +24,44 @@ const menuItems = [
         title: "Pages",
         list: [
             {
-                title: "Dashboard",
+                title: "Inicio",
                 path: "/dashboard",
                 icon: <MdDashboard />,
             },
             {
-                title: "Users",
+                title: "Usuario",
                 path: "/dashboard/users",
                 icon: <MdSupervisedUserCircle />,
             },
             {
-                title: "Products",
+                title: "Cursos",
                 path: "/dashboard/products",
-                icon: <MdShoppingBag />,
-            },
-            {
-                title: "Transactions",
-                path: "/dashboard/transactions",
-                icon: <MdAttachMoney />,
+                icon: <MdBook />,
             },
         ],
     },
     {
-        title: "Analytics",
+        title: "Notas",
         list: [
             {
-                title: "Revenue",
+                title: "Promedio",
                 path: "/dashboard/revenue",
-                icon: <MdWork />,
+                icon: <MdQueryStats />,
             },
             {
-                title: "Reports",
+                title: "Clases",
                 path: "/dashboard/reports",
-                icon: <MdAnalytics />,
+                icon: <MdNotes />,
             },
             {
-                title: "Teams",
+                title: "Calendario",
                 path: "/dashboard/teams",
-                icon: <MdPeople />,
+                icon: <MdCalendarMonth />,
             },
         ],
     },
     {
-        title: "Users",
+        title: "Usuario",
         list: [
             {
                 title: "Settings",
@@ -69,7 +69,7 @@ const menuItems = [
                 icon: <MdOutlineSettings />,
             },
             {
-                title: "Help",
+                title: "Ayuda",
                 path: "/dashboard/help",
                 icon: <MdHelpCenter />,
             },

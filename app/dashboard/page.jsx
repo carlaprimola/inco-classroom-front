@@ -1,8 +1,8 @@
 import Card from "../ui/dashboard/card/card";
-import Chart from "../ui/dashboard/chart/chart";
+import Footer from "../ui/dashboard/footer/footer.jsx"
 import styles from "../ui/dashboard/dashboard.module.css";
-import Rightbar from "../ui/dashboard/rightbar/rightbar";
-import Transactions from "../ui/dashboard/transactions/transactions";
+// import Rightbar from "../ui/dashboard/rightbar/rightbar";
+
 
 const Dashboard = () => {
     return (
@@ -12,13 +12,14 @@ const Dashboard = () => {
                     {/* {cards.map((item) => (
                         <Card item={item} key={item.id} />
                     ))} */}
+                    
                 </div>
-                <Transactions />
-                <Chart />
+
             </div>
             <div className={styles.side}>
-                <Rightbar />
+                {/* <Rightbar /> */}
             </div>
+            {/* <Footer/> */}
         </div>
     );
 };

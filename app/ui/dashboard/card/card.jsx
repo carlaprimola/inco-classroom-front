@@ -15,6 +15,7 @@ const Card = ({ item }) => {
                     {item.change > 0 ? "more" : "less"} than previous week
                 </span>
             </div>
+            
         </div>
     );
 };

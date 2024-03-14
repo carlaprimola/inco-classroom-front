@@ -39,7 +39,7 @@
 .form textarea,
 .form select {
     padding: 20px;
-    border: 2px solid #2e374a;
+    border: 2px solid #08215C;
     border-radius: 5px;
     background-color: var(--bg);
     color: var(--text);

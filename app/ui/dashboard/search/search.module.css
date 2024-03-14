@@ -2,7 +2,7 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    background-color: #2e374a;
+    background-color: #F0F7FB;
     padding: 10px;
     border-radius: 10px;
     width: max-content;
@@ -11,6 +11,6 @@
 .input {
     background-color: transparent;
     border: none;
-    color: var(--text);
+    color: #08215C;
     outline: none;
 }
