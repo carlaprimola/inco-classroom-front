@@ -1,3 +1,5 @@
+import ButtonLogin from "../ui/components/button/ButtonHome";
+
 /**
  * Renders a login form with email and password inputs, a submit button, and a link to reset the password.
  * @returns {JSX.Element} The login form component.
@@ -35,11 +37,8 @@ const Login = () => {
                                 Forget your Password?
                             </a>
                         </div>
-                        <button
-                            className="px-6 py-2 bg-violet-500 rounded hover:bg-white hover:text-violet-700 font-semibold transition-all text-white hover:scale-110"
-                        >
-                            Submit
-                        </button>
+                        <ButtonLogin text="Enviar" href="/dashboard" className="bg-[#007AFF]"/>
+                       
                     </div>
                 </div>
             </div>
