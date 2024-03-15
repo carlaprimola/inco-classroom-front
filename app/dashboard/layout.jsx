@@ -5,16 +5,16 @@ import Footer from "../ui/dashboard/footer/footer"
 
 const Layout = ({ children }) => {
     return (
-        <div className={styles.container}>
-            <div className={styles.menu}>
+        <main className={styles.container}>
+            <section className={styles.menu}>
                 <Sidebar />
-            </div>
-            <div className={styles.content}>
+            </section>
+            <navigator className={styles.content}>
                 <Navbar />
                 {children}
-                <Footer />
-            </div>
-        </div>
+                {/* <Footer /> */}
+            </navigator>
+        </main>
     )
 }
 
