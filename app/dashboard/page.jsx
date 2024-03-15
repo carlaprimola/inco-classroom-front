@@ -1,26 +1,27 @@
 import Card from "../ui/dashboard/card/card";
 import Footer from "../ui/dashboard/footer/footer.jsx"
 import styles from "../ui/dashboard/dashboard.module.css";
-// import Rightbar from "../ui/dashboard/rightbar/rightbar";
+import Rightbar from "../ui/dashboard/rightbar/rightbar";
 
 
 const Dashboard = () => {
     return (
-        <div className={styles.wrapper}>
-            <div className={styles.main}>
-                <div className={styles.cards}>
+        <main className={styles.wrapper}>
+            <section className={styles.main}>
+                <article className={styles.cards}>
+                    {/* este çes el contenedor centrral, dentro de nuestro dashborad */}
                     {/* {cards.map((item) => (
                         <Card item={item} key={item.id} />
                     ))} */}
                     
-                </div>
+                </article>
 
-            </div>
-            <div className={styles.side}>
+            </section>
+            <aside className={styles.side}>
                 {/* <Rightbar /> */}
-            </div>
+            </aside>
             {/* <Footer/> */}
-        </div>
+        </main>
     );
 };
 

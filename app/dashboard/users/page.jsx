@@ -1,6 +1,6 @@
 // import Pagination from "@/app/ui/dashboard/pagination/pagination";
-import Search from "@/app/ui/dashboard/search/search";
-import styles from "@/app/ui/dashboard/users/users.module.css";
+import Search from "/app/ui/dashboard/search/search";
+import styles from "/app/ui/dashboard/users/users.module.css";
 import Image from "next/image";
 import Link from "next/link";
 

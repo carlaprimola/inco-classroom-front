@@ -18,6 +18,7 @@ import {
     MdNote,
     MdNotes,
 } from "react-icons/md";
+import Link from 'next/link';
 
 const menuItems = [
     {
@@ -35,7 +36,7 @@ const menuItems = [
             },
             {
                 title: "Cursos",
-                path: "/dashboard/products",
+                path: "/dashboard/courses",
                 icon: <MdBook />,
             },
         ],
@@ -97,9 +98,15 @@ const Sidebar = () => {
                     </li>
                 ))}
             </ul>
-            <button className={styles.logout}>
-                <MdLogout/>
-                Logout
+            <button  >
+            <Link  className={styles.logout} href='/login'><MdLogout />Cerrar sesión
+            </Link>
+            
+            {/* <Link> 
+                <a href='/login'> 
+                    Logout
+                </a>
+            </Link> */}
             </button>
         </div>
     );
