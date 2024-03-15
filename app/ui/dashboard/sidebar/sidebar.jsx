@@ -36,7 +36,7 @@ const menuItems = [
             },
             {
                 title: "Cursos",
-                path: "/dashboard/courses",
+                path: "/dashboard/cursos",
                 icon: <MdBook />,
             },
         ],

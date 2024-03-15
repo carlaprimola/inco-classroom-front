@@ -25,7 +25,7 @@ const CardPage = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                     {cursos.map(cursos => (
                         <div key={cursos.ID} className="bg-white rounded-lg shadow-md overflow-hidden">
-                            {/* <img src={cursos.imageUrl} alt={cursos.NombreCurso} className="w-full h-40 object-cover" /> */}
+                            <img src={cursos.imageUrl} alt={cursos.NombreCurso} className="w-full h-40 object-cover" />
                             
                             <div className="p-6">
                                 <h2 className="text-xl text-black font-semibold mb-2">{cursos.NombreCurso}</h2>
