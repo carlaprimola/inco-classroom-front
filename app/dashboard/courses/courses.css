@@ -1,0 +1,22 @@
+.hover\:shadow-xl:hover {
+    box-shadow: 0 4px 6px -1px rgba(0.2, 0.2, 0.2, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+
+  button {
+    font-size: 17px;
+    padding: 0.5em 2em;
+    border: transparent;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+    background: dodgerblue;
+    color: white;
+    border-radius: 4px;
+   }
+   
+   button:hover {
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(0,122,255,1) 20%, rgba(68,216,202) 100%);
+   }
+   
+   button:active {
+    transform: translate(0em, 0.2em);
+   }
