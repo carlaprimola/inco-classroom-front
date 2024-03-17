@@ -1,0 +1,132 @@
+/* ShowBlogs */
+body{
+    margin: 0;
+    padding: 0;
+    margin-bottom: 10px;
+  }
+  
+  .app-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .App {
+    text-align: center;
+  }
+  
+  #footer{
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 20px 
+  }
+  
+  .App-logo {
+    height: 40vmin;
+    pointer-events: none;
+  }
+  
+  @media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+      animation: App-logo-spin infinite 20s linear;
+    }
+  }
+  
+    
+  .col-md-4{
+    height: 500px;
+  }
+  
+  .img-container{
+    max-width: 100%;
+    margin: 0;
+    text-align: center;
+  }
+  
+  .card-img-top{
+    max-width: 100%;
+    min-height: 255px;
+    max-height: 255px;
+    width: auto;
+    height: auto;
+    display: inline-block;
+     
+  }
+  
+  .footer{
+    display: flex;
+    flex-direction: row;
+  }
+  
+  /* CreateBlogs */
+  .card-footer {
+    display: flex;
+    justify-content: center;
+    margin-top: -225px;
+    margin: auto;
+    padding-bottom: 100px;
+  }
+  
+  .create{
+    margin-bottom: 20px;
+  }
+  
+  .create .form-control{
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+  }
+  
+  .alert-message-create{
+    width: 50%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+  }
+  
+  .button-modal{
+  
+    display: flex;
+    justify-content: center;
+    margin: auto;
+  }
+  
+  .select-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   
+    
+  }
+  
+  select{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 50%!important;
+    max-width: 80%!important;
+  }
+  
+  
+  
+  /* EditBlogs */
+  .edit .form-control{
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+  }
+  
+  /* Modal */
+  .info-card{
+    text-align: center;
+  }
+  
+  .buttons-edit{
+    display: flex;
+    justify-content:space-between ;
+  }
