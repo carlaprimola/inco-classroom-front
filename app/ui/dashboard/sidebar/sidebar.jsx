@@ -42,7 +42,7 @@ const menuItems = [
         ],
     },
     {
-        title: "Notas",
+        // title: "Notas",
         list: [
             {
                 title: "Promedio",
@@ -62,10 +62,10 @@ const menuItems = [
         ],
     },
     {
-        title: "Usuario",
+        title: "Configuración",
         list: [
             {
-                title: "Settings",
+                title: "Configurar Cursos",
                 path: "/dashboard/settings",
                 icon: <MdOutlineSettings />,
             },
