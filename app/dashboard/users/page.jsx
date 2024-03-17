@@ -1,75 +1,58 @@
-// import Pagination from "@/app/ui/dashboard/pagination/pagination";
-import Search from "/app/ui/dashboard/search/search";
-import styles from "/app/ui/dashboard/users/users.module.css";
-import Image from "next/image";
-import Link from "next/link";
-import { fetchUsers } from "../../lib/data.js";
+// // users/page.jsx
 
-const UsersPage = async ({ searchParams }) => {
-    const q = searchParams?.q || "";
-    const page = searchParams?.page || 1;
-    const { count, users } = await fetchUsers(q, page);
+// 'use client';
 
-    return (
-        <div className={styles.container}>
-            <div className={styles.top}>
-                <Search placeholder="Search for a user..." />
-                <Link href="/dashboard/users/add">
-                    <button className={styles.addButton}>Add New</button>
-                </Link>
-            </div>
-            <table className={styles.table}>
-                <thead>
-                    <tr>
-                        <td>Name</td>
-                        <td>Email</td>
-                        <td>Created At</td>
-                        <td>Role</td>
-                        <td>Status</td>
-                        <td>Action</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    {users.map((user) => (
-                        <tr key={user.id}>
-                            <td>
-                                <div className={styles.user}>
-                                    <Image
-                                        src={user.img || "/noavatar.png"}
-                                        alt=""
-                                        width={40}
-                                        height={40}
-                                        className={styles.userImage}
-                                    />
-                                    {user.username}
-                                </div>
-                            </td>
-                            <td>{user.email}</td>
-                            <td>{user.createdAt?.toString().slice(4, 16)}</td>
-                            <td>{user.isAdmin ? "Admin" : "Client"}</td>
-                            <td>{user.isActive ? "active" : "passive"}</td>
-                            <td>
-                                <div className={styles.buttons}>
-                                    <Link href={`/dashboard/users/${user.id}`}>
-                                        <button className={`${styles.button} ${styles.view}`}>
-                                            View
-                                        </button>
-                                    </Link>
-                                    <form action={deleteUser}>
-                                        <input type="hidden" name="id" value={(user.id)} />
-                                        <button className={`${styles.button} ${styles.delete}`}>
-                                            Delete
-                                        </button>
-                                    </form>
-                                </div>
-                            </td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-            {/* <Pagination count={count} /> */}
-        </div>
-    );
-};
+// import React, { useState, useEffect } from 'react';
+// import { fetchUsers } from "/app/lib/data.js"; // Importa la función fetchUsers
+// import Search from "/app/ui/dashboard/search/search";
+// import styles from "/app/ui/dashboard/users/users.module.css";
+// // Importa Image de 'next/image' si es necesario
+// import Link from "next/link";
+// import { fetchUsers } from "../../lib/data.js";
 
-export default UsersPage;
+// const UsersPage = ({ searchParams }) => {
+//     const [users, setUsers] = useState([]);
+
+//     useEffect(() => {
+//         const loadUsers = async () => {
+//             try {
+//                 const usersData = await fetchUsers(searchParams?.q || "", searchParams?.page || 1);
+//                 setUsers(usersData); // Asigna directamente los datos de usuarios al estado de usuarios
+//             } catch (error) {
+//                 console.error('Error fetching users:', error);
+//             }
+//         };
+
+//         loadUsers();
+//     }, [searchParams]);
+
+//     return (
+//         <div className={styles.container}>
+//             <div className={styles.top}>
+//                 <Search placeholder="Search for a user..." />
+//                 <Link href="/dashboard/users/add">
+//                     <button className={styles.addButton}>Add New</button>
+//                 </Link>
+//             </div>
+//             <div className="bg-gray-100 min-h-screen py-16">
+//                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+//                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+//                         {users.map(user => (
+//                             <div key={user.ID} className="bg-white rounded-lg shadow-md overflow-hidden">
+//                                 {/* Agrega las propiedades del usuario que deseas mostrar */}
+//                                 <div className="p-6 text-black ">
+//                                     <h2 className="text-xl font-semibold mb-2">{user.Nombre}</h2>
+//                                     <p>Email: {user.Email}</p>
+//                                     {/* Mostrar el rol del usuario */}
+//                                     <p>Rol: {user.role.TipoRol}</p>
+//                                 </div>
+//                             </div>
+//                         ))}
+//                     </div>
+//                 </div>
+//             </div>
+//         </div>
+//     );
+// };
+
+// export default UsersPage;
