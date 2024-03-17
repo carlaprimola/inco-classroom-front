@@ -14,7 +14,8 @@
     "react": "^18",
     "react-dom": "^18",
     "react-icons": "^4.11.0",
-    "recharts": "^2.12.2"
+    "recharts": "^2.12.2",
+    "use-debounce": "^10.0.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.18",
