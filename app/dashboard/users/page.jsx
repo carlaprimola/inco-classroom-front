@@ -1,5 +1,3 @@
-// users/page.jsx
-
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -57,3 +55,4 @@ const UsersPage = ({ searchParams }) => {
 };
 
 export default UsersPage;
+
