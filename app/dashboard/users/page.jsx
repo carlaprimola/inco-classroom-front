@@ -29,8 +29,8 @@ const UsersPage = ({ searchParams }) => {
         <div className={styles.container}>
             <div className={styles.top}>
                 <Search placeholder="Search for a user..." />
-                <Link href="/dashboard/users/add">
-                    <button className={styles.addButton}>Add New</button>
+                <Link className='text-black' href="/dashboard/users/add">
+                    <button className= {styles.addButton}>Add New</button>
                 </Link>
             </div>
             <div className="bg-gray-100 min-h-screen py-16">
