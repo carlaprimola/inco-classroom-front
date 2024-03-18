@@ -1,28 +1,28 @@
-// import axios from 'axios';
+import axios from 'axios';
 
-// const BASE_URL = 'http://localhost:8000';
+const BASE_URL = 'http://localhost:8000';
 
-// export const fetchUsers = async (q, page) => {
-//     try {
-//         // Realizar la solicitud GET al backend
-//         const response = await axios.get(`${BASE_URL}/usuarios?q=${q}&page=${page}`);
+export const fetchUsers = async (q, page) => {
+    try {
+        // Realizar la solicitud GET al backend
+        const response = await axios.get(`${BASE_URL}/usuarios?q=${q}&page=${page}`);
         
-//         // Verificar el formato de los datos devueltos
-//         console.log('Datos de usuarios recibidos:', response.data);
+        // Verificar el formato de los datos devueltos
+        console.log('Datos de usuarios recibidos:', response.data);
 
-//         // Asegurarse de que la respuesta contenga un arreglo de usuarios
-//         if (!Array.isArray(response.data)) {
-//             throw new Error('La respuesta no contiene un arreglo de usuarios.');
-//         }
+        // Asegurarse de que la respuesta contenga un arreglo de usuarios
+        if (!Array.isArray(response.data)) {
+            throw new Error('La respuesta no contiene un arreglo de usuarios.');
+        }
 
-//         // Devolver los datos de usuarios
-//         return response.data;
-//     } catch (error) {
-//         // Manejar errores de solicitud o formato de datos
-//         console.error('Error al obtener usuarios:', error);
-//         throw new Error('Error al obtener usuarios. Por favor, inténtalo de nuevo.');
-//     }
-// };
+        // Devolver los datos de usuarios
+        return response.data;
+    } catch (error) {
+        // Manejar errores de solicitud o formato de datos
+        console.error('Error al obtener usuarios:', error);
+        throw new Error('Error al obtener usuarios. Por favor, inténtalo de nuevo.');
+    }
+};
 
 
 // import { Product, User } from "./models";
@@ -33,18 +33,18 @@
 
 //     const ITEM_PER_PAGE = 2;
 
-    // try {
-    //     connectToDB();
-    //     const count = await User.find({ username: { $regex: regex } }).count();
-    //     const users = await User.find({ username: { $regex: regex } })
-    //         .limit(ITEM_PER_PAGE)
-    //         .skip(ITEM_PER_PAGE * (page - 1));
-    //     return { count, users };
-    // } catch (err) {
-    //     console.log(err);
-    //     throw new Error("Failed to fetch users!", err);
-    // }
-
+//     try {
+//         connectToDB();
+//         const count = await User.find({ username: { $regex: regex } }).count();
+//         const users = await User.find({ username: { $regex: regex } })
+//             .limit(ITEM_PER_PAGE)
+//             .skip(ITEM_PER_PAGE * (page - 1));
+//         return { count, users };
+//     } catch (err) {
+//         console.log(err);
+//         throw new Error("Failed to fetch users!");
+//     }
+// };
 
 // export const fetchUser = async (id) => {
 //     console.log(id);

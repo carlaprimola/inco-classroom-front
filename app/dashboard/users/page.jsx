@@ -9,7 +9,6 @@ import styles from "/app/ui/dashboard/users/users.module.css";
 // Importa Image de 'next/image' si es necesario
 import Link from "next/link";
 
-
 const UsersPage = ({ searchParams }) => {
     const [users, setUsers] = useState([]);
 
@@ -34,17 +33,17 @@ const UsersPage = ({ searchParams }) => {
                     <button className= {styles.addButton}>Add New</button>
                 </Link>
             </div>
-            <div className="text-black bg-gray-100 min-h-screen py-16">
-                <div className="text-black max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-black grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <div className="bg-gray-100 min-h-screen py-16">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                         {users.map(user => (
-                            <div key={user.ID} className="text-black bg-white rounded-lg shadow-md overflow-hidden">
+                            <div key={user.ID} className="bg-white rounded-lg shadow-md overflow-hidden">
                                 {/* Agrega las propiedades del usuario que deseas mostrar */}
-                                <div className="text-black p-6">
-                                    <h2 className="text-black text-xl font-semibold mb-2">{user.Nombre}</h2>
-                                    <p className='text-black'>Email: {user.Email}</p>
+                                <div className="p-6 text-black ">
+                                    <h2 className="text-xl font-semibold mb-2">{user.Nombre}</h2>
+                                    <p>Email: {user.Email}</p>
                                     {/* Mostrar el rol del usuario */}
-                                    <p className='text-black'>Rol: {user.role.TipoRol}</p>
+                                    <p>Rol: {user.role.TipoRol}</p>
                                 </div>
                             </div>
                         ))}
