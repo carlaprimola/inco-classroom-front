@@ -1,19 +1,35 @@
+"use client"
 import axios from 'axios';
+import { useState } from 'react';
 
 const BASE_URL = 'http://localhost:8000';
 
-export const fetchUsers = async (q, page) => {
+
+export const fetchUsers = async () => {
+    const user_id = localStorage.getItem("user")
+    // const [users,setUsers]=useState([]);
     try {
+
         // Realizar la solicitud GET al backend
-        const response = await axios.get(`${BASE_URL}/usuarios?q=${q}&page=${page}`);
+        const response = await axios.get(`${BASE_URL}/usuarios/${user_id}`);
+        // const data = response.json();
+        // setUsers(data)
+        // console.log(users)
+
         
         // Verificar el formato de los datos devueltos
         console.log('Datos de usuarios recibidos:', response.data);
 
-        // Asegurarse de que la respuesta contenga un arreglo de usuarios
-        if (!Array.isArray(response.data)) {
-            throw new Error('La respuesta no contiene un arreglo de usuarios.');
-        }
+        // return(
+        //     <>
+                
+        //     </>
+        // )
+
+        // // Asegurarse de que la respuesta contenga un arreglo de usuarios
+        // if (!Array.isArray(response.data)) {
+        //     throw new Error('La respuesta no contiene un arreglo de usuarios.');
+        // }
 
         // Devolver los datos de usuarios
         return response.data;
