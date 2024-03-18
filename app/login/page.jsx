@@ -69,6 +69,8 @@
 // }
 
 // export default Login;
+
+
 "use client"
 import React, { useState } from "react";
 import axios from "axios";
@@ -92,7 +94,7 @@ const Login = () => {
             console.log(error)
         }
     };
-
+    
     return (
         <div className="h-screen w-full bg-cover relative">
             <div className="absolute inset-0" style={{ backgroundImage: "url('/images/Image_Header1_49d601fa4c.jpg')", backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
