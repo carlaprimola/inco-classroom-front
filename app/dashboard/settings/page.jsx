@@ -5,6 +5,7 @@ import axios from "axios";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare, faTrash } from "@fortawesome/free-solid-svg-icons";
+import EditCourse from "./editCourse.jsx";
 
 export default function CourseSettings() {
     const [cursos, setCursos] = useState([]);
@@ -36,31 +37,30 @@ export default function CourseSettings() {
 
     return (
         <main>
-            <h1 className="text-black">Administración de Cursos</h1>
-            <table>
+            <table className="min-w-full divide-y divide-gray-200">
                 <thead>
                     <tr>
-                        <th className="text-black">Nombre del Curso</th>
-                        <th className="text-black">Imagen</th>
-                        <th className="text-black">ID del Contenido del Curso</th>
-                        <th className="text-black">Docente</th>
-                        <th className="text-black">Duración</th>
-                        <th className="text-black">Acciones</th>
+                        <th className="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Nombre del Curso</th>
+                        <th className="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Imagen</th>
+                        <th className="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">ID del Contenido del Curso</th>
+                        <th className="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Docente</th>
+                        <th className="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Duración</th>
+                        <th className="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Acciones</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody className="bg-white divide-y divide-gray-200">
                     {cursos.map(curso => (
                         <tr key={curso.ID}>
-                            <td className="text-black">{curso.NombreCurso}</td>
-                            <td className="text-black">{curso.imageUrl}</td>
-                            <td className="text-center text-black">{curso.contenidocurso_ID}</td>
-                            <td className="text-black">{curso.Docente}</td>
-                            <td className="text-black">{curso.Duracion}</td>
-                            <td>
-                                <Link href={`/edit/${curso.ID}`}>
-                                    <button className=" w-10 h-10 text-center justify-center button-courses flex items-center text-white mb-3  bg-blue-500"><FontAwesomeIcon icon={faPenToSquare} /></button>
+                            <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">{curso.NombreCurso}</td>
+                            <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">{curso.imageUrl}</td>
+                            <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500 text-center">{curso.contenidocurso_ID}</td>
+                            <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">{curso.Docente}</td>
+                            <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">{curso.Duracion}</td>
+                            <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
+                            <Link href={`settings/edit/${curso.ID}`}>
+                                    <button className="w-10 h-10 text-center justify-center button-courses flex items-center text-white mb-3 bg-blue-500 hover:bg-blue-600 rounded-full shadow-md"><FontAwesomeIcon icon={faPenToSquare} /></button>
                                 </Link>
-                                <button className="w-10 h-10 text-center justify-center button-courses flex items-center text-white mb-3 bg-red-500" onClick={() => deleteCurso(curso.ID)}><FontAwesomeIcon icon={faTrash} /></button>
+                                <button className="w-10 h-10 text-center justify-center button-courses flex items-center text-white mb-3 bg-red-500 hover:bg-red-600 rounded-full shadow-md" onClick={() => deleteCurso(curso.ID)}><FontAwesomeIcon icon={faTrash} /></button>
                             </td>
                         </tr>
                     ))}

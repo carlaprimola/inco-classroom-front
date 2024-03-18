@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./courses.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar, faStarHalfAlt,faEye, faXmark, faShareNodes  } from "@fortawesome/free-solid-svg-icons";
+import { faStar, faStarHalfAlt, faXmark } from "@fortawesome/free-solid-svg-icons";
 import StartCourseButton from "../../ui/dashboard/courses/StartCourseButton";
 import ShareButton from "../../ui/dashboard/courses/ShareButton";
 import ViewMoreButton from "../../ui/dashboard/courses/ViewMoreButton";
