@@ -1,0 +1,141 @@
+[33mcommit d552daf6160042274cc4555a4ac3bf7985d45896[m[33m ([m[1;36mHEAD -> [m[1;32mtest-carla[m[33m, [m[1;31morigin/test-carla[m[33m)[m
+Merge: ae47d24 3e824d9
+Author: Carla Escobar <carlaprimola@outlook.es>
+Date:   Sat Mar 16 18:20:40 2024 +0100
+
+    Merge branch 'forms' of https://github.com/carlaprimola/inco-classroom-front into test-carla
+
+[33mcommit ae47d24a07e477a24ada9d029bb72bee06c6f558[m
+Author: Carla Escobar <carlaprimola@outlook.es>
+Date:   Sat Mar 16 18:12:39 2024 +0100
+
+    frontend_Content001_adding content courses in dashboard
+
+[33mcommit 3e824d9744580d39218c59a5df5205bcad678995[m[33m ([m[1;31morigin/forms[m[33m)[m
+Author: soyshan <shanbu131@gmail.com>
+Date:   Fri Mar 15 17:08:07 2024 +0100
+
+    fronted_MergeBranch002_Cleaning the code of page of login  after the merge
+
+[33mcommit fe32138c16b341fc6c6d87bbf23a696818f9834f[m
+Merge: e374914 4367e82
+Author: soyshan <shanbu131@gmail.com>
+Date:   Fri Mar 15 15:24:58 2024 +0100
+
+    fronted_MergeBranch001_Merge  with login branc to bring some changes
+
+[33mcommit a2bbd0342dd1130aea38c6850b05aa5ff376733d[m
+Merge: 045fffb e374914
+Author: Carla Escobar <carlaprimola@outlook.es>
+Date:   Fri Mar 15 15:00:27 2024 +0100
+
+    Merge branch 'forms' of https://github.com/carlaprimola/inco-classroom-front into test-carla
+
+[33mcommit 045fffb3a61565e46de605e1a5346d335f04b5a6[m
+Author: Carla Escobar <carlaprimola@outlook.es>
+Date:   Fri Mar 15 14:52:45 2024 +0100
+
+    frontend_content001_show content of courses
+
+[33mcommit e374914697c1e934aa2cbaa8c066fad4493423d5[m
+Author: soyshan <shanbu131@gmail.com>
+Date:   Fri Mar 15 14:50:10 2024 +0100
+
+    fronted_Login002_Connected the form of login with the back
+
+[33mcommit 4367e822ae2c8c1c76d8705a6b9b626c0b1412da[m[33m ([m[1;31morigin/login[m[33m)[m
+Author: Mayonesio <jara.mayonesio@gmail.com>
+Date:   Fri Mar 15 14:11:37 2024 +0100
+
+    frontend_dashboard004_features as the users list on dashboard an showing userRole on another view
+
+[33mcommit ac765c2e8fabc00a9dbab96aa347d088c55a0e96[m
+Author: Mayonesio <jara.mayonesio@gmail.com>
+Date:   Fri Mar 15 12:38:00 2024 +0100
+
+    frontend_dashboard003_courses joined to DB and setted on dashboard as a complement
+
+[33mcommit 5b711d3e328dcb6fce64b77a2aadbee70981b8d0[m
+Author: soyshan <shanbu131@gmail.com>
+Date:   Fri Mar 15 11:50:58 2024 +0100
+
+    frontend_CoursesCard001_Create courses cards and connect with back
+
+[33mcommit 18a29778b231b7a3c7b4c10682f9ce9864d6e519[m[33m ([m[1;32mforms[m[33m)[m
+Author: soyshan <shanbu131@gmail.com>
+Date:   Fri Mar 15 09:29:17 2024 +0100
+
+    fronted_ConnectionBack001_Connect login with the back
+
+[33mcommit 946dff6a2e74ee3ba1f40cdc102ffbd9ca70d2b9[m
+Author: soyshan <shanbu131@gmail.com>
+Date:   Thu Mar 14 18:48:35 2024 +0100
+
+    frontend_Login001_Trying to connect with the back and install axios
+
+[33mcommit ce187560a7e0cff97f4c869e0156e55004982c73[m
+Author: Mayonesio <jara.mayonesio@gmail.com>
+Date:   Thu Mar 14 14:56:05 2024 +0100
+
+    frontend_home001setted and change of button in components
+
+[33mcommit 5a7812e51bf0998f3ffd87056584215937e267d7[m
+Author: Mayonesio <jara.mayonesio@gmail.com>
+Date:   Thu Mar 14 13:34:20 2024 +0100
+
+    frontend_dashboard003_Several changes in layout and colors
+
+[33mcommit be4ce1c0526fc23e253acf1c274f4d58110edac8[m
+Author: G Alexander Carrión <alexander@MacBook-Pro-de-G.local>
+Date:   Wed Mar 13 09:18:20 2024 +0100
+
+    fronted_dashboard002_initial setup dashboard
+
+[33mcommit 4ff02895717c50a14f928a7a7dc8938ed0830574[m
+Author: Mayonesio <jara.mayonesio@gmail.com>
+Date:   Wed Mar 13 08:47:58 2024 +0100
+
+    frontend_login002_setup layout of origin
+
+[33mcommit 8144c72442b911ce0f1a43f4262bb1741ce8298c[m
+Author: Mayonesio <jara.mayonesio@gmail.com>
+Date:   Tue Mar 12 10:19:08 2024 +0100
+
+    frontend_login001_setup layout of origin
+
+[33mcommit 6e6ed8a1a62a2539821b60f5268c633c3af02b5b[m
+Author: Mayonesio <jara.mayonesio@gmail.com>
+Date:   Mon Mar 11 13:57:32 2024 +0100
+
+    frontend_structure003_erase src
+
+[33mcommit c1d7348fcb6e830506a0e4a99d4ccf3795c3e7e9[m
+Author: G Alexander Carrión <alexander@MacBook-Pro-de-G.local>
+Date:   Mon Mar 11 13:54:08 2024 +0100
+
+    fronted_structure001_initial layout
+
+[33mcommit 3e26eb80e8c5019421eb72a035fcca816767e5d1[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m
+Merge: 27bd75b 8fd6c55
+Author: Carla Escobar <carlaprimola@outlook.es>
+Date:   Fri Mar 8 09:19:59 2024 +0100
+
+    Merge branch 'main' of https://github.com/carlaprimola/inco-classroom-front
+
+[33mcommit 27bd75b15806b67b745f2cd9ec2d2ce7338b86ac[m[33m ([m[1;31morigin/courses[m[33m, [m[1;31morigin/contact[m[33m, [m[1;31morigin/calendar[m[33m)[m
+Author: Carla Escobar <carlaprimola@outlook.es>
+Date:   Fri Mar 8 09:13:19 2024 +0100
+
+    first commit
+
+[33mcommit 8fd6c55b44acd3ac5cc4c3e30f3bcf64207b7e89[m
+Author: Carla Escobar <149241504+carlaprimola@users.noreply.github.com>
+Date:   Fri Mar 8 09:05:21 2024 +0100
+
+    Initial commit
+
+[33mcommit c76d2573a3bc1bf0804b244310e062285ad5508c[m
+Author: Carla Escobar <carlaprimola@outlook.es>
+Date:   Thu Mar 7 12:22:24 2024 +0100
+
+    Initial commit from Create Next App
