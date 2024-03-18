@@ -59,11 +59,27 @@ const CardPage = () => {
     const handleStartCourseClick = () => {
         console.log("Comenzar curso");
       };
+
+
       //Boton compartir curso
       const handleShareCourseClick = () => {
         console.log("Compartir curso")
       }
 
+
+      const handleVerMasClick = (cursoID) => {
+        // Encuentra el curso correspondiente al ID
+        const curso = cursos.find(curso => curso.ID === cursoID);
+      
+        // Actualiza el estado del curso seleccionado
+        setCursoSeleccionado(curso);
+      
+        // Muestra el modal
+        setModalVisible(true);
+      };
+
+
+      
   return (
     <main className="bg-gray-100 min-h-screen py-16">
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

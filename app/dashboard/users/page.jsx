@@ -1,18 +1,9 @@
-// users/page.jsx
-
-'use client';
-
-import React, { useState, useEffect } from 'react';
-import { fetchUsers } from "/app/lib/data.js"; // Importa la función fetchUsers
-// users/page.jsx
-
 'use client';
 
 import React, { useState, useEffect } from 'react';
 import { fetchUsers } from "/app/lib/data.js"; // Importa la función fetchUsers
 import Search from "/app/ui/dashboard/search/search";
 import styles from "/app/ui/dashboard/users/users.module.css";
-// Importa Image de 'next/image' si es necesario
 // Importa Image de 'next/image' si es necesario
 import Link from "next/link";
 
@@ -57,13 +48,8 @@ const UsersPage = ({ searchParams }) => {
                     </div>
                 </div>
             </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </div>
         </div>
-    );
+    )
 };
 
 export default UsersPage;
