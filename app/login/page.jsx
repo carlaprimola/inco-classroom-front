@@ -69,6 +69,8 @@
 // }
 
 // export default Login;
+
+
 "use client"
 import React, { useState } from "react";
 import axios from "axios";
@@ -82,9 +84,9 @@ const Login = () => {
     const handleLogin = async () => {
         try {
             const response = await axios.post("http://localhost:8000/login", { email, password });
-            const { token, user } = response.data; // Extraer el token y los datos del usuario de la respuesta del servidor
+            const { token, user_id } = response.data; // Extraer el token y los datos del usuario de la respuesta del servidor
             localStorage.setItem('token', token); // Almacenar el token en localStorage
-            localStorage.setItem('user', JSON.stringify(user)); // Almacenar los datos del usuario en localStorage
+            localStorage.setItem('user', user_id); // Almacenar los datos del usuario en localStorage
         
             window.location.href = "/dashboard";
         } catch (error) {
@@ -139,4 +141,3 @@ const Login = () => {
 }
 
 export default Login;
-

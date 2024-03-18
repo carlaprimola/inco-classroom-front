@@ -11,9 +11,13 @@ const UsersPage = ({ searchParams }) => {
 
     useEffect(() => {
         const loadUserRole = async () => {
+            const user2 = await fetchUsers();
+            console.log(user2.role.TipoRol)
+
             try {
-                const { data } = await fetchUsers(searchParams?.q || "", searchParams?.page || 1);
-                setUserRole(data.role.TipoRol);
+                const user = await fetchUsers();
+                setUserRole(user.role.TipoRol);
+                console.log(userRole)
             } catch (error) {
                 console.error('Error fetching user role:', error);
             }
