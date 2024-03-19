@@ -3,7 +3,7 @@
 "use client"
 import React, { useState } from "react";
 import axios from "axios";
-import ButtonLogin from "../ui/components/button/ButtonLogin";
+import ButtonLogin from "../ui/dashboard/button/ButtonLogin";
 
 const Login = () => {
     const [email, setEmail] = useState("");

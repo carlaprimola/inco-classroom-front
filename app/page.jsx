@@ -1,5 +1,5 @@
 import React from 'react';
-import ButtonHome from './ui/components/button/ButtonHome';
+import ButtonHome from './ui/dashboard/button/ButtonHome';
 
 const Homepage = () => {
     return (
