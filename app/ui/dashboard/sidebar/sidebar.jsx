@@ -104,7 +104,7 @@ const Sidebar = ({ searchParams })=> {
         <div className={styles.container}>
             <div className={styles.user}>
             <Image className={`${styles.userImage}`} 
-                    src={userData ? userData.imageUrl : ''} 
+                    src={userData ? userData.imgProfile : ''} 
                     alt={userData ? userData.name : ''} 
                     width={100} 
                     height={100}
