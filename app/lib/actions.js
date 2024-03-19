@@ -2,7 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { Product, User } from "./models";
-import { connectToDB } from "./utils";
+import { connectToDB } from "./getUserData";
 import { redirect } from "next/navigation";
 import bcrypt from "bcrypt";
 import { signIn } from "../auth";
