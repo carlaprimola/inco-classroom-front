@@ -23,7 +23,7 @@ const UsersPage = ({ searchParams }) => {
 
     return (
         <div className={styles.container}>
-            <div className={styles.top}>
+            <div className={styles.top}><a>ESTUDIANTE</a>
                 <Search placeholder="Search for a user..." />
                 <Link href="/dashboard/users/add">
                     <button className={styles.addButton}>Add New</button>
