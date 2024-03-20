@@ -74,24 +74,33 @@
 "use client"
 import React, { useState } from "react";
 import axios from "axios";
-import ButtonLogin from "../ui/components/button/ButtonLogin";
+import ButtonLogin from "../ui/dashboard/button/ButtonLogin";
 
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState(null);
+   
 
     const handleLogin = async () => {
         try {
             const response = await axios.post("http://localhost:8000/login", { email, password });
-            const { token, user_id } = response.data; // Extraer el token y los datos del usuario de la respuesta del servidor
+            const { token, user_id, tipoRol } = response.data; // Extraer el token, el ID del usuario y su rol de la respuesta del servidor
             localStorage.setItem('token', token); // Almacenar el token en localStorage
-            localStorage.setItem('user', user_id); // Almacenar los datos del usuario en localStorage
-        
-            window.location.href = "/dashboard";
+            localStorage.setItem('user', user_id ); // Almacenar los datos del usuario en localStorage
+            localStorage.setItem('role', tipoRol);
+            // Redireccionar según el rol del usuario
+            console.log(response)
+            if (tipoRol === 2) {
+                window.location.href = "/dashboard"; // Redireccionar al dashboard del docente
+            } else if (tipoRol === 1) {
+                window.location.href = "/dashboardEstudiante"; // Redireccionar al dashboard del estudiante
+            } else {
+                setError("Rol de usuario no válido");
+            }
         } catch (error) {
             setError("Email o contraseña incorrectos");
-            console.log(error)
+            console.log(error);
         }
     };
 
