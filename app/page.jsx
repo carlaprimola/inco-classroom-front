@@ -1,5 +1,5 @@
 import React from 'react';
-import ButtonHome from './ui/components/button/ButtonHome';
+import ButtonHome from './ui/dashboard/button/ButtonHome';
 
 const Homepage = () => {
     return (
@@ -12,7 +12,7 @@ const Homepage = () => {
                 <span className="flex justify-center items-center w-full h-full z-10">
                     <img src='/images/incoBLanco.svg' alt="Logo" className="w-96 h-auto" />
                 </span>
-                <section className="relative z-10 flex flex-col justify-center items-center mt-[-27rem] h-full text-center">
+                <section className="relative z-10 flex flex-col justify-center items-center mt-[-8%] h-full text-center">
                     <h1 className="text-5xl font-bold leading-tight mb-4">¡Bienvenidos a la academia!</h1>
                     <p className="text-lg text-gray-300 mb-8">Aqui comienza tu verdadera formación.</p>
                     <div className="flex flex-row gap-10"> {/* Flexbox container con un espacio entre los elementos */}
