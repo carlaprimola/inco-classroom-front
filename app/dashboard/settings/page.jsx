@@ -118,7 +118,6 @@ export default function CourseSettings() {
                     <tr>
                         <th className="text-black">Nombre del Curso</th>
                         <th className="text-black">Imagen</th>
-                        <th className="text-black">ID del Contenido del Curso</th>
                         <th className="text-black">Docente</th>
                         <th className="text-black">Duración</th>
                         <th className="text-black">Acciones</th>
@@ -129,10 +128,10 @@ export default function CourseSettings() {
                         <tr key={curso.ID}>
                             <td className="text-black">{curso.NombreCurso}</td>
                             <td className="text-black">{curso.imageUrl}</td>
-                            <td className="text-center text-black">{curso.contenidocurso_ID}</td>
                             <td className="text-black">{curso.Docente}</td>
                             <td className="text-black">{curso.Duracion}</td>
                             <td>
+
                             <Link href={`/dashboard/editcourse?id=${curso.ID}`}>
     <button className="w-10 h-10 text-center justify-center button-courses flex items-center text-white bg-blue-500 mr-3"><FontAwesomeIcon icon={faPenToSquare} /></button>
 </Link>
