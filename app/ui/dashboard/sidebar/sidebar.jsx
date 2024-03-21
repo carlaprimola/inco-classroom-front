@@ -34,7 +34,7 @@ const menuItems = [
             },
             {
                 title: "Usuario",
-                path: "/dashboard/usuarios",
+                path: "/dashboard/users",
                 icon: <MdSupervisedUserCircle />,
             },
             {
@@ -59,7 +59,7 @@ const menuItems = [
             },
             {
                 title: "Calendario",
-                path: "/dashboard/teams",
+                path: "/dashboard/calendar",
                 icon: <MdCalendarMonth />,
             },
         ],
