@@ -301,14 +301,14 @@ export default function CourseSettings() {
 
   return (
     <main>
-      <h1 className="text-black">Administración de Cursos y Contenidos</h1>
-      <div className="flex justify-center mb-3">
+      {/* <h1 className="text-black">Administración de Cursos y Contenidos</h1> */}
+      <div className="flex justify-center mb-3 mt-6">
         <button
           className={`w-40 h-12 ${
             activeTab === "courses"
-              ? "bg-blue-500 text-white"
-              : "bg-gray-300 text-gray-700"
-          } rounded-md mr-3 hover:bg-blue-600`}
+              ? "bg-blue-800 text-white"
+              : "bg-teal-400 text-white"
+          } rounded-md mr-3 hover:bg-blue-800`}
           onClick={() => setActiveTab("courses")}
         >
           Cursos
@@ -316,9 +316,9 @@ export default function CourseSettings() {
         <button
           className={`w-40 h-12 ${
             activeTab === "content"
-              ? "bg-green-500  text-white"
-              : "bg-gray-300 text-gray-700"
-          } rounded-md hover:bg-green-600`}
+              ? "bg-blue-800 text-white"
+              : "bg-teal-400 text-white"
+          } rounded-md  hover:bg-blue-800`}
           onClick={() => setActiveTab("content")}
         >
           Contenido
@@ -327,17 +327,26 @@ export default function CourseSettings() {
   
       {activeTab === "courses" && (
         <>
-          <div className="flex justify-center mb-3">
+          {/* <div className="flex justify-center mb-3">
             <Link href="/dashboard/settings/createcourse">
-              <button className="w-40 h-12 bg-blue-500 text-white rounded-md mr-3 hover:bg-blue-600">
+              <button className="w-40 h-12 bg-teal-400 text-white rounded-md mr-3 hover:bg-blue-800">
+                <FontAwesomeIcon icon={faPlus} /> Crear Curso
+              </button>
+            </Link>
+          </div> */}
+          <div className="text-gray-900 bg-gray-200">
+            <div className="p-4 flex">
+              <h2 className="text-3xl">Gestión de Cursos</h2>
+            </div>
+
+            <div className="flex justify-center mb-3">
+            <Link href="/dashboard/settings/createcourse">
+              <button className="w-40 h-12 bg-teal-400 text-white rounded-md mr-3 hover:bg-blue-800">
                 <FontAwesomeIcon icon={faPlus} /> Crear Curso
               </button>
             </Link>
           </div>
-          <div className="text-gray-900 bg-gray-200">
-            <div className="p-4 flex">
-              <h1 className="text-3xl">Cursos</h1>
-            </div>
+
             <div className="px-3 py-4 flex justify-center">
               <table className="w-full text-md bg-white shadow-md rounded mb-4">
                 <tbody>
@@ -365,7 +374,7 @@ export default function CourseSettings() {
                       <td className="p-2 text-center">
                         <div className="flex flex-col items-center">
                           <Link href={`/dashboard/settings/editcourse?id=${curso.ID}`}>
-                          <button className="w-10 h-10 text-center justify-center flex items-center text-white bg-blue-500 mb-1">
+                          <button className="w-10 h-10 text-center justify-center flex items-center text-white bg-blue-800 mb-1">
                               <FontAwesomeIcon icon={faPenToSquare} />
                             </button>
                           </Link>
@@ -387,17 +396,24 @@ export default function CourseSettings() {
       )}
       {activeTab === "content" && (
   <>
-    <div className="flex justify-center mb-3">
+    {/* <div className="flex justify-center mb-3">
       <Link href="/dashboard/settings/createcontent">
-        <button className="w-40 h-12 bg-green-500 text-white rounded-md hover:bg-green-600">
+        <button className="w-40 h-12 bg-teal-400 text-white rounded-md mr-3 hover:bg-blue-800">
+          <FontAwesomeIcon icon={faPlus} /> Crear Contenido
+        </button>
+      </Link>
+    </div> */}
+    <div className="text-gray-900 bg-gray-200">
+      <div className="p-2 flex">
+        <h2 className="text-3xl mt-2">Gestión de Contenidos</h2>
+      </div>
+      <div className="flex justify-center mb-2">
+      <Link href="/dashboard/settings/createcontent">
+        <button className="w-40 h-12 bg-teal-400 text-white rounded-md mr-3 hover:bg-blue-800">
           <FontAwesomeIcon icon={faPlus} /> Crear Contenido
         </button>
       </Link>
     </div>
-    <div className="text-gray-900 bg-gray-200">
-      <div className="p-4 flex">
-        <h1 className="text-3xl">Contenidos</h1>
-      </div>
       <div className="px-3 py-4 flex justify-center">
         <table className="w-full text-md bg-white shadow-md rounded mb-4">
           <tbody>
@@ -435,7 +451,7 @@ export default function CourseSettings() {
                 <td className="text-center">
   <div className="flex flex-col items-center">
     <Link href={`/dashboard/settings/editcontent?id=${contenido.ID}`}>
-      <button className="w-10 h-10 text-center justify-center flex items-center text-white bg-blue-500 mb-1">
+      <button className="w-10 h-10 text-center justify-center flex items-center text-white bg-blue-800 mb-1">
         <FontAwesomeIcon icon={faPenToSquare} />
       </button>
     </Link>
@@ -459,37 +475,33 @@ export default function CourseSettings() {
 
 
 {showModalCurso && (
-  <div className="fixed z-10 inset-0 overflow-y-auto">
-    <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-      <div className="fixed inset-0 transition-opacity" aria-hidden="true">
-        <div className="absolute inset-0 bg-gray-500 opacity-75"></div>
-      </div>
-      <span className="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
-      <div className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
-        <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-          <div className="sm:flex sm:items-start">
-            <div className="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
-              <svg className="h-6 w-6 text-red-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </div>
-            <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-              <h3 className="text-lg leading-6 font-medium text-gray-900">Eliminar Curso</h3>
-              <div className="mt-2">
-                <p className="text-sm text-gray-500">¿Estás seguro de que deseas eliminar este curso?</p>
-              </div>
-            </div>
+  <div className="fixed z-10 inset-0 overflow-y-auto flex items-center justify-center">
+    <div className="absolute inset-0 bg-gray-500 opacity-75"></div>
+    <div className="max-w-md border rounded-lg relative">
+      <div className="flex flex-col p-5 rounded-lg shadow bg-white">
+        <div className="flex">
+          <div>
+            <svg className="w-6 h-6 fill-current text-red-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
+          </div>
+
+          <div className="ml-3">
+            <h2 className="font-semibold text-gray-800">Eliminar Curso</h2>
+            <p className="mt-2 text-sm text-gray-600 leading-relaxed">¿Estás seguro de que deseas eliminar este curso?</p>
           </div>
         </div>
-        <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+
+        <div className="flex justify-end items-center mt-3">
           <button
-           onClick={() => deleteCurso(idToDelete)}
-            className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm">
+            onClick={() => deleteCurso(idToDelete)}
+            className="px-4 py-2 bg-red-500 hover:bg-red-600 text-white text-sm font-medium rounded-md"
+          >
             Eliminar
           </button>
+
           <button
             onClick={() => setShowModalCurso(false)}
-            className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
+            className="px-4 py-2 ml-2 bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm font-medium rounded-md"
+          >
             Cancelar
           </button>
         </div>
@@ -499,37 +511,33 @@ export default function CourseSettings() {
 )}
 
 {showModalContenido && (
-  <div className="fixed z-10 inset-0 overflow-y-auto">
-    <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-      <div className="fixed inset-0 transition-opacity" aria-hidden="true">
-        <div className="absolute inset-0 bg-gray-500 opacity-75"></div>
-      </div>
-      <span className="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
-      <div className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
-        <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-          <div className="sm:flex sm:items-start">
-            <div className="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
-              <svg className="h-6 w-6 text-red-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </div>
-            <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-              <h3 className="text-lg leading-6 font-medium text-gray-900">Eliminar Contenido</h3>
-              <div className="mt-2">
-                <p className="text-sm text-gray-500">¿Estás seguro de que deseas eliminar este contenido?</p>
-              </div>
-            </div>
+  <div className="fixed z-10 inset-0 overflow-y-auto flex items-center justify-center">
+    <div className="absolute inset-0 bg-gray-500 opacity-75"></div>
+    <div className="max-w-md border rounded-lg relative">
+      <div className="flex flex-col p-5 rounded-lg shadow bg-white">
+        <div className="flex">
+          <div>
+            <svg className="w-6 h-6 fill-current text-red-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
+          </div>
+
+          <div className="ml-3">
+            <h2 className="font-semibold text-gray-800">Eliminar Contenido</h2>
+            <p className="mt-2 text-sm text-gray-600 leading-relaxed">¿Estás seguro de que deseas eliminar este contenido?</p>
           </div>
         </div>
-        <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+
+        <div className="flex justify-end items-center mt-3">
           <button
             onClick={() => deleteContenido(idToDelete)}
-            className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm">
+            className="px-4 py-2 bg-red-500 hover:bg-red-600 text-white text-sm font-medium rounded-md"
+          >
             Eliminar
           </button>
+
           <button
             onClick={() => setShowModalContenido(false)}
-            className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
+            className="px-4 py-2 ml-2 bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm font-medium rounded-md"
+          >
             Cancelar
           </button>
         </div>
