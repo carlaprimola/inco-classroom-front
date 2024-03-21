@@ -26,6 +26,7 @@
     background-color: #f0f7fb;
     padding: 10px;
     border-radius: 10px;
+    color: var(--textSoft);
 }
 
 .input{
@@ -37,4 +38,5 @@
 .icons{
     display: flex;
     gap: 20px;
+    color: var(--textSoft);
 }

@@ -6,6 +6,7 @@
     padding: 10px;
     border-radius: 10px;
     width: max-content;
+    color: var(--textSoft);
 }
 
 .input {
@@ -13,4 +14,7 @@
     border: none;
     color: #08215C;
     outline: none;
+}
+.searchIcon {
+    color: var(--textSoft); /* Color del icono */
 }

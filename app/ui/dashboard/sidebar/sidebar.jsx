@@ -52,11 +52,11 @@ const menuItems = [
                 path: "/dashboard/revenue",
                 icon: <MdQueryStats />,
             },
-            {
-                title: "Clases",
-                path: "/dashboard/reports",
-                icon: <MdNotes />,
-            },
+            // {
+            //     title: "Clases",
+            //     path: "/dashboard/reports",
+            //     icon: <MdNotes />,
+            // },
             {
                 title: "Calendario",
                 path: "/dashboard/teams",
@@ -127,19 +127,16 @@ const Sidebar = ({ searchParams }) => {
                         {cat.list.map((item, index) => ( // Agregar un índice como clave para `item`
                             <MenuLink item={item} key={index} />
                         ))}
+                        {/* <Link className={styles.logout} href='/login'><MdLogout />Cerrar sesión
+                        </Link> */}
                     </li>
                 ))}
             </ul>
 
-            <button  >
+            <button className="w-[100%]" >
                 <Link className={styles.logout} href='/login'><MdLogout />Cerrar sesión
                 </Link>
 
-                {/* <Link> 
-                <a href='/login'> 
-                    Logout
-                </a>
-            </Link> */}
             </button>
         </div>
     );
