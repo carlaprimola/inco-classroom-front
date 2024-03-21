@@ -21,15 +21,33 @@ const EditCourseContentPage = () => {
         }
     }, []);
 
+    // const obtenerDatosCurso = async (id) => {
+    //     try {
+    //         const response = await axios.get(`http://localhost:8000/cursos/${id}`);
+    //         setCurso(response.data);
+    //     } catch (error) {
+    //         console.error("Error al obtener el curso:", error);
+    //     }
+    // };
+
     const obtenerDatosCurso = async (id) => {
         try {
-            const response = await axios.get(`http://localhost:8000/cursos/${id}`);
-            setCurso(response.data);
+            const cursoResponse = await axios.get(`http://localhost:8000/cursos/${id}`);
+            const contenidoResponse = await axios.get(`http://localhost:8000/contenido/${id}`); // Cambia la URL según corresponda
+            const cursoData = cursoResponse.data;
+            const contenidoData = contenidoResponse.data;
+            
+            setCurso({
+                ...cursoData,
+                contenidocurso: {
+                    ...contenidoData
+                }
+            });
         } catch (error) {
             console.error("Error al obtener el curso:", error);
         }
     };
-
+    
     const actualizarCurso = async () => {
         try {
             const params = new URLSearchParams(window.location.search);

@@ -80,7 +80,7 @@
 //                 >
 //                   <FontAwesomeIcon icon={faTrash} />
 //                 </button>
-//                 <Link href={`/dashboard/settings/contentlist?id=${curso.ID}`}>
+//                 <Link href={`/dashboard/settings/editcontent?id=${curso.ID}`}>
 //                   <button className="w-10 h-10 text-center justify-center  flex items-center text-white bg-green-500">
 //                     Ver más
 //                   </button>
@@ -235,7 +235,7 @@ export default function CourseSettings() {
                       <FontAwesomeIcon icon={faTrash} />
                     </button>
                     <Link
-                      href={`/dashboard/settings/contentlist?id=${curso.ID}`}
+                      href={`/dashboard/settings/editcontent?id=${curso.ID}`}
                     >
                       <button className="w-10 h-10 text-center justify-center flex items-center text-white bg-green-500">
                         Ver más
@@ -295,7 +295,7 @@ export default function CourseSettings() {
                   <td className="text-black">{contenido.Nivel}</td>
                   <td>
                     <Link
-                      href={`/dashboard/settings/contentlist?id=${contenido.ID}`}
+                      href={`/dashboard/settings/editcontent?id=${contenido.ID}`}
                     >
                       <button className="w-10 h-10 text-center justify-center flex items-center text-white bg-blue-500 mr-3">
                         <FontAwesomeIcon icon={faPenToSquare} />
