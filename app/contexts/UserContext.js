@@ -5,7 +5,7 @@ const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
     const [userData, setUserData] = useState(null);
-
+    // console.log("desde ahora", userData)
     useEffect(() => {
         // Obtener la información del usuario del localStorage
         const storedUserData = localStorage.getItem('userData');
