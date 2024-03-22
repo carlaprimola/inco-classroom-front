@@ -205,14 +205,13 @@ const EditContentPage = () => {
     event.preventDefault();
     try {
       await axios.put(`http://localhost:8000/contenido/${content.ID}`, content);
-      toast.success("Contenido actualizado correctamente", { autoClose: 2000 }); // Mensaje de confirmación de cambios guardados
+      toast.success("Contenido actualizado correctamente");
       // Redirigir a la página de configuración/dashboard u otra página después de la edición
     } catch (error) {
       console.error("Error al actualizar contenido:", error);
       toast.error("Error al actualizar contenido");
     }
   };
-
 
   return (
     <div className="bg-white  border-4 rounded-lg shadow relative m-10">
@@ -260,11 +259,11 @@ const EditContentPage = () => {
             </div>
             <div className="col-span-6 sm:col-span-3">
               <label htmlFor="aptitude2" className="text-sm font-medium text-gray-900 block mb-2">Aptitud 2</label>
-              <input type="text" name="Aptitud2" id="aptitude2" value={content.Aptitud2} onChange={handleInputChange} className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Aptitud 2" required />
+              <input type="text" name="Aptitud2" id="aptitude2" value={content.Aptitud2} onChange={handleInputChange} className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Aptitud 2"  />
             </div>
             <div className="col-span-6 sm:col-span-3">
               <label htmlFor="aptitude3" className="text-sm font-medium text-gray-900 block mb-2">Aptitud 3</label>
-              <input type="text" name="Aptitud3" id="aptitude3" value={content.Aptitud3} onChange={handleInputChange} className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Aptitud 3" required />
+              <input type="text" name="Aptitud3" id="aptitude3" value={content.Aptitud3} onChange={handleInputChange} className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Aptitud 3"  />
             </div>
             <div className="col-span-6 sm:col-span-3">
               <label htmlFor="level" className="text-sm font-medium text-gray-900 block mb-2">Nivel</label>
