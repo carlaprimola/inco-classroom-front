@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./calendar.css";
+import { toast } from "react-toastify";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faLocationDot,
@@ -15,6 +16,13 @@ function CalendarioPage() {
   const [calendarioData, setCalendarioData] = useState(null);
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [newEvent, setNewEvent] = useState({
+    Fecha: "",
+    DescripcionActividad: "",
+    Direccion: "",
+    Hora: "",
+    CursoID: "",
+  });
 
   useEffect(() => {
     const fetchCalendario = async () => {
@@ -72,17 +80,137 @@ function CalendarioPage() {
     setIsModalOpen(false);
   };
 
+  //Funcion para crear un nuevo evento
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setNewEvent((newEvent) => ({
+      ...newEvent,
+      [name]: value,
+    }));
+  };
+
+  //Funcion para añadir nuevo evento
+  const handleSubmit = async () => {
+    event.preventDefault();
+    if (
+      newEvent.Fecha.trim() === "" ||
+      newEvent.DescripcionActividad.trim() === "" ||
+      newEvent.Direccion.trim() === "" ||
+      newEvent.Hora.trim() === "" ||
+      newEvent.CursoID.trim() === ""
+    ) {
+      toast.error("Por favor, completa todos los campos obligatorios");
+      return
+    }
+
+    try {
+      await axios.post("http://localhost:8000/calendario", newEvent);
+
+      console.log("Nuevo evento creado con éxito");
+      setIsModalOpen(false);
+    } catch (error) {
+      console.log("Error al crear el nuevo evento:", error);
+    }
+  };
+
+  // Obtener la fecha actual en formato UTC
+  const currentDate = new Date();
+  const utcDate = currentDate.toISOString();
+
+  // Enviar la fecha UTC al servidor (simulado)
+  axios
+    .post("http://localhost:8000/crearEvento", { fecha: utcDate })
+    .then((response) => {
+      console.log("Evento creado correctamente");
+    })
+    .catch((error) => {
+      console.error("Error al crear evento:", error);
+    });
+
   return (
     <main>
       <h5 className="text-xl font-bold mt-4 mb-2 text-black">Calendario</h5>
-      <span className="text-black mt-3 mb-3">
-        Aquí tienes un resumen de los eventos a los que asistir en INCO Academy
-      </span>
+      <div className="flex flex-col">
+        <span className="text-black mt-3 mb-3">
+          Aquí tienes un resumen de los eventos a los que asistir en INCO
+          Academy
+        </span>
+        <button
+          className="w-25 h-5 flex justify-center items-center bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 text-center text-sm"
+          onClick={() => setIsModalOpen(true)}
+        >
+          Nuevo Evento
+        </button>
+      </div>
+
+      {/* Modal para crear nuevo evento */}
+      {isModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-800 bg-opacity-75">
+          <div className="modal-calendar w-1/2 bg-white p-6 rounded-lg">
+            <div className="flex justify-between mb-4">
+              <h3 className="text-xl font-bold">Crear Nuevo Evento</h3>
+              <button
+                className="bg-gray-300 text-black px-4 py-2 rounded"
+                onClick={() => setIsModalOpen(false)}
+              >
+                <FontAwesomeIcon icon={faXmark} />
+              </button>
+            </div>
+            <input
+              type="date"
+              name="Fecha"
+              value={newEvent.Fecha}
+              onChange={handleInputChange}
+              className="mb-4 text-black"
+            />
+            <input
+              type="text"
+              name="DescripcionActividad"
+              value={newEvent.DescripcionActividad}
+              onChange={handleInputChange}
+              placeholder="Descripción de la Actividad"
+              className="mb-4  text-black"
+            />
+            <input
+              type="text"
+              name="Direccion"
+              value={newEvent.Direccion}
+              onChange={handleInputChange}
+              placeholder="Dirección"
+              className="mb-4  text-black"
+            />
+            <input
+              type="time"
+              name="Hora"
+              value={newEvent.Hora}
+              onChange={handleInputChange}
+              className="mb-4  text-black"
+            />
+            <input
+              type="text"
+              name="CursoID"
+              value={newEvent.CursoID}
+              onChange={handleInputChange}
+              placeholder="ID del Curso"
+              className="mb-4  text-black"
+            />
+            {/* Contenedor para el botón */}
+            <div className="mb-4 flex justify-center">
+              <button
+                className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+                onClick={handleSubmit}
+              >
+                Crear Evento
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       <h2 className="mt-8 rounded bg-blue-500 text-center text-lg font-medium mb-5 text-white">
         {capitalizedMonth} {year}
       </h2>
       <div className="grid grid-cols-7 gap-2">
-        {/* Renderizar los nombres de los días de la semana */}
         {daysOfWeek.map((day, index) => (
           <div
             key={index}
@@ -91,14 +219,14 @@ function CalendarioPage() {
             {day}
           </div>
         ))}
-        {/* Renderizar los días del mes */}
+
         {march2024.map((day, index) => (
           <div
             key={index + 7}
             className="mb-5 p-2 border border-gray-300 text-end text-sm font-medium text-black"
           >
             {day.getDate()}
-            {/* Filtrar y mostrar los eventos para este día */}
+
             {calendarioData &&
               calendarioData.map(
                 (evento) =>
@@ -115,8 +243,9 @@ function CalendarioPage() {
           </div>
         ))}
       </div>
+
       {/* Modal */}
-      
+
       {isModalOpen && selectedEvent && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-800 bg-opacity-75">
           <div className="modal-calendar w-1/2 bg-white p-6 rounded-lg">
