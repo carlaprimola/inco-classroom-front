@@ -44,11 +44,6 @@ const Sidebar = ({ searchParams, isOpen, toggleSidebar }) => {
                     icon: <MdBook />,
                 },
                 {
-                    title: "Promedio",
-                    path: "/dashboard/revenue",
-                    icon: <MdQueryStats />,
-                },
-                {
                     title: "Calendario",
                     path: "/dashboard/teams",
                     icon: <MdCalendarMonth />,
@@ -60,7 +55,7 @@ const Sidebar = ({ searchParams, isOpen, toggleSidebar }) => {
                 },
                 {
                     title: "Cerrar sesión",
-                    path: "/dashboard/settings",
+                    path: "/login",
                     icon: <MdLogout />,
                 },
             ],
