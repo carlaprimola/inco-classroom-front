@@ -3,7 +3,7 @@
 }
 
 .menu {
-    flex: 1;
+    flex: 2;
     background-color: var(--bgSoft);
     padding: 20px;
     min-height: 100vh;
