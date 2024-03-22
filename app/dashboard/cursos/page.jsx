@@ -26,21 +26,18 @@ const CardPage = () => {
   }, []);
 
   useEffect(() => {
-    // Solo fetchCursos si tenemos el currentUserID
-    if (currentUserID) {
-      const fetchCursos = async () => {
-        try {
-          const response = await axios.get(`http://localhost:8000/cursos/${currentUserID}`);
-          console.log("Datos de cursos recibidos:", response.data);
-          setCursos(response.data);
-        } catch (error) {
-          console.error("Error fetching cursos:", error);
-        }
-      };
-  
-      fetchCursos();
-    }
-  }, [currentUserID]);
+    const fetchCursos = async () => {
+      try {
+        const response = await axios.get("http://localhost:8000/cursos");
+        console.log("Datos de cursos recibidos:", response.data);
+        setCursos(response.data);
+      } catch (error) {
+        console.error("Error fetching cursos:", error);
+      }
+    };
+
+    fetchCursos();
+  }, []);
 
   const handleCursoClick = async (cursoID) => {
     try {
