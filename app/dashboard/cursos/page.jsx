@@ -12,20 +12,35 @@ const CardPage = () => {
   const [cursos, setCursos] = useState([]);
   const [cursoSeleccionado, setCursoSeleccionado] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
+  const [currentUserID, setCurrentUserID] = useState(null); // Aquí almacenaremos el ID del usuario actual
 
   useEffect(() => {
-    const fetchCursos = async () => {
-      try {
-        const response = await axios.get("http://localhost:8000/cursos");
-        console.log("Datos de cursos recibidos:", response.data);
-        setCursos(response.data);
-      } catch (error) {
-        console.error("Error fetching cursos:", error);
-      }
+    // Lógica para obtener el ID del usuario actual (puedes implementarla según tu sistema de autenticación)
+    const fetchCurrentUserID = async () => {
+      // Implementa la lógica para obtener el ID del usuario actual
+      // Aquí un ejemplo básico, puedes adaptarlo según tu sistema de autenticación
+      setCurrentUserID(11); // Por ejemplo, asumimos que el ID del usuario actual es 11
     };
 
-    fetchCursos();
+    fetchCurrentUserID();
   }, []);
+
+  useEffect(() => {
+    // Solo fetchCursos si tenemos el currentUserID
+    if (currentUserID) {
+      const fetchCursos = async () => {
+        try {
+          const response = await axios.get(`http://localhost:8000/cursos/${currentUserID}`);
+          console.log("Datos de cursos recibidos:", response.data);
+          setCursos(response.data);
+        } catch (error) {
+          console.error("Error fetching cursos:", error);
+        }
+      };
+  
+      fetchCursos();
+    }
+  }, [currentUserID]);
 
   const handleCursoClick = async (cursoID) => {
     try {
