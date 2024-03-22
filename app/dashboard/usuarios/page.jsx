@@ -10,10 +10,10 @@ const UserPage = () => {
     const fetchUsuarios = async () => {
       try {
         const response = await axios.get("http://localhost:8000/usuarios");
-        console.log("Datos de usuarios recibidos:", response.data);
+        
         setUsuarios(response.data);
       } catch (error) {
-        console.error("Error fetching usuarios:", error);
+        console.error("Error al mostrar los usuarios:", error);
       }
     };
 

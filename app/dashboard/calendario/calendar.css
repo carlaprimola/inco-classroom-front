@@ -1,0 +1,9 @@
+.modal-calendar{
+    width: 30%;
+    object-fit: cover;
+}
+
+.modal-img{
+    width: 80%;
+    object-fit: cover;
+}

@@ -11,10 +11,7 @@ export const fetchUsers = async () => {
         // Realizar la solicitud GET al backend
         const response = await axios.get(`${BASE_URL}/usuarios/${user_id}`);
         
-        // Verificar el formato de los datos devueltos
-        console.log('Datos de usuarios recibidos:', response.data);
-
-        return response.data;
+       return response.data;
     } catch (error) {
         // Manejar errores de solicitud o formato de datos
         console.error('Error al obtener usuarios:', error);

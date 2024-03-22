@@ -50,7 +50,7 @@ const Sidebar = ({ searchParams, isOpen, toggleSidebar }) => {
                 },
                 {
                     title: "Calendario",
-                    path: "/dashboard/teams",
+                    path: "/dashboard/calendario",
                     icon: <MdCalendarMonth />,
                 },
                 {
@@ -60,7 +60,7 @@ const Sidebar = ({ searchParams, isOpen, toggleSidebar }) => {
                 },
                 {
                     title: "Cerrar sesión",
-                    path: "/dashboard/settings",
+                    path: "/dashboard/login",
                     icon: <MdLogout />,
                 },
             ],
