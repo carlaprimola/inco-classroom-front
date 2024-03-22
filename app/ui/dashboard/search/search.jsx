@@ -25,10 +25,10 @@ const Search = ({ placeholder }) => {
 
     return (
         <div className={styles.container}>
-            <MdSearch />
+            <MdSearch className={styles.searchIcon} />
             <input
                 type="text"
-                placeholder={placeholder}
+                placeholder={placeholder || "Buscar..."} // Placeholder predeterminado "Buscar..."
                 className={styles.input}
                 onChange={handleSearch}
             />
