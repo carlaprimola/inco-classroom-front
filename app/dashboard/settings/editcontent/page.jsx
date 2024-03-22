@@ -234,7 +234,7 @@ const EditContentPage = () => {
         <form onSubmit={handleSubmit}>
           <div className="grid grid-cols-6 gap-6">
             <div className="col-span-6 sm:col-span-3">
-              <label htmlFor="product-name" className="text-sm font-medium text-gray-900 block mb-2">Título del Material</label>
+              <label htmlFor="product-name" className="text-sm font-medium text-gray-900 block mb-2">Título del Material  </label>
               <input type="text" name="TituloMaterial" id="product-name" value={content.TituloMaterial} onChange={handleInputChange} className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Apple Imac 27”" required />
             </div>
             <div className="col-span-6 sm:col-span-3">

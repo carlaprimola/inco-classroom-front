@@ -62,26 +62,26 @@ const CreateCoursePage = () => {
 
             <div className="p-6 space-y-6">
                 <form onSubmit={handleSubmit}>
-                    <div className="grid grid-cols-6 gap-6">
+                    <div className="grid grid-cols-6 gap-6 text-black">
                         <div className="col-span-6">
-                            <label htmlFor="NombreCurso" className="text-sm font-medium text-gray-900 block mb-2">Nombre del Curso</label>
+                            <label htmlFor="NombreCurso" className="text-sm font-medium block mb-2">Nombre del Curso <span className="text-red-500">*</span> </label>
                             <input type="text" name="NombreCurso" id="NombreCurso" value={curso.NombreCurso} onChange={handleInputChange} className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Nombre del Curso" required />
                         </div>
                         <div className="col-span-6">
-                            <label htmlFor="imageUrl" className="text-sm font-medium text-gray-900 block mb-2">Imagen</label>
-                            <input type="text" name="imageUrl" id="imageUrl" value={curso.imageUrl} onChange={handleInputChange} className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="URL de la imagen" required />
+                            <label htmlFor="imageUrl" className="text-sm font-medium  block mb-2">Imagen <span className="text-red-500">*</span></label>
+                            <input type="text" name="imageUrl" id="imageUrl" value={curso.imageUrl} onChange={handleInputChange} className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Pega la URL de una imagen para tu curso" required />
                         </div>
                         <div className="col-span-6">
-                            <label htmlFor="Docente" className="text-sm font-medium text-gray-900 block mb-2">Docente</label>
+                            <label htmlFor="Docente" className="text-sm font-medium  block mb-2">Docente <span className="text-red-500">*</span> </label>
                             <input type="text" name="Docente" id="Docente" value={curso.Docente} onChange={handleInputChange} className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Docente" required />
                         </div>
                         <div className="col-span-6">
-                            <label htmlFor="Duracion" className="text-sm font-medium text-gray-900 block mb-2">Duración</label>
+                            <label htmlFor="Duracion" className="text-sm font-medium  block mb-2">Duración <span className="text-red-500">*</span> </label>
                             <input type="text" name="Duracion" id="Duracion" value={curso.Duracion} onChange={handleInputChange} className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Duración del Curso" required />
                         </div>
                         <div className="col-span-6">
-                            <label htmlFor="contenidoCursoID" className="text-sm font-medium text-gray-900 block mb-2">ID del Contenido del Curso</label>
-                            <input type="text" name="contenidoCursoID" id="contenidoCursoID" value={curso.contenidoCursoID} onChange={handleInputChange} className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="ID del Contenido del Curso" />
+                            <label htmlFor="contenidoCursoID" className="text-sm font-medium  block mb-2">ID del Contenido del Curso</label>
+                            <input type="text" name="contenidoCursoID" id="contenidoCursoID" value={curso.contenidoCursoID} onChange={handleInputChange} className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Utiliza el ID del contenido que hayas creado" />
                         </div>
                     </div>
                     <div className="p-6 border-t border-gray-200 rounded-b">
