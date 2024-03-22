@@ -205,13 +205,14 @@ const EditContentPage = () => {
     event.preventDefault();
     try {
       await axios.put(`http://localhost:8000/contenido/${content.ID}`, content);
-      toast.success("Contenido actualizado correctamente");
+      toast.success("Contenido actualizado correctamente", { autoClose: 2000 }); // Mensaje de confirmación de cambios guardados
       // Redirigir a la página de configuración/dashboard u otra página después de la edición
     } catch (error) {
       console.error("Error al actualizar contenido:", error);
       toast.error("Error al actualizar contenido");
     }
   };
+
 
   return (
     <div className="bg-white  border-4 rounded-lg shadow relative m-10">
