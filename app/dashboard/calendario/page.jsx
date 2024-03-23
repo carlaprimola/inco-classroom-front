@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./calendar.css";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faLocationDot,
@@ -10,6 +10,7 @@ import {
   faXmark,
   faClock,
   faUserTie,
+  faHourglass,
 } from "@fortawesome/free-solid-svg-icons";
 
 function CalendarioPage() {
@@ -80,18 +81,68 @@ function CalendarioPage() {
     setIsModalOpen(false);
   };
 
-  //Funcion para crear un nuevo evento
+  //Funcion para recoger nuevos campos al crear un nuevo evento
   const handleInputChange = (event) => {
     const { name, value } = event.target;
+    let fecha; 
+
+    if (name === "Fecha") {
+      const fecha = value.split("T")[0];
+      setNewEvent((prevState) => ({
+        ...prevState,
+        Fecha: fecha,
+      }));
+    } else if (name === "Hora") {
+      const hora = value.split("T")[1];
+      setNewEvent((prevState) => ({
+        ...prevState,
+        Hora: hora,
+      }));
+    } else {
+      setNewEvent((prevState) => ({
+        ...prevState,
+        [name]: value,
+      }));
+    }
+
+    
+    console.log("Nuevo dato:", value)    
     setNewEvent((newEvent) => ({
       ...newEvent,
       [name]: value,
     }));
   };
 
-  //Funcion para añadir nuevo evento
-  const handleSubmit = async () => {
+  //Envio de formulario
+  const handleSubmit = async (event) => {
     event.preventDefault();
+
+    // Verificar que newEvent no sea null o undefined
+  if (!newEvent) {
+    console.error("El evento es nulo o indefinido");
+    return;
+  }
+
+  // Verificar que todas las propiedades de newEvent estén definidas
+  const { Fecha, DescripcionActividad, Direccion, Hora, CursoID } = newEvent;
+  if (!Fecha || !DescripcionActividad || !Direccion || !Hora || !CursoID) {
+    console.error("Alguna propiedad de newEvent es nula o indefinida");
+    return;
+  }
+
+  // Verificar que las propiedades de newEvent no estén vacías después de recortar los espacios en blanco
+  if (
+    Fecha.trim() === "" ||
+    DescripcionActividad.trim() === "" ||
+    Direccion.trim() === "" ||
+    Hora.trim() === "" ||
+    CursoID.trim() === ""
+  ) {
+    console.error("Alguna propiedad de newEvent está vacía después de recortar los espacios en blanco");
+    return;
+  }
+
+
     if (
       newEvent.Fecha.trim() === "" ||
       newEvent.DescripcionActividad.trim() === "" ||
@@ -99,34 +150,48 @@ function CalendarioPage() {
       newEvent.Hora.trim() === "" ||
       newEvent.CursoID.trim() === ""
     ) {
-      toast.error("Por favor, completa todos los campos obligatorios");
-      return
+      // toast.error("Por favor, completa todos los campos obligatorios");
+      return;
     }
 
-    try {
-      await axios.post("http://localhost:8000/calendario", newEvent);
+    // Validar el formato de la fecha
+  const dateRegex = /^\d{4}-\d{2}-\d{2}$/; // Expresión regular para el formato yyyy-MM-dd
+  if (!dateRegex.test(newEvent.Fecha)) {
+    console.error("El formato de la fecha no es válido:", newEvent.Fecha);
+    // Agrega un mensaje de error o manejo adecuado para la fecha con formato incorrecto
+    return;
+  }
 
-      console.log("Nuevo evento creado con éxito");
+    try {
+      // Convierte la fecha y hora a un formato adecuado antes de enviarla al servidor
+    const formattedDate = new Date(newEvent.Fecha + "T" + newEvent.Hora + ":00");
+    const formattedEventData = {
+      ...newEvent,
+      Fecha: formattedDate.toISOString() // Convierte la fecha a formato ISO
+    };
+
+      // Enviar la fecha UTC al servidor (simulado)
+      const response = await axios.post("http://localhost:8000/calendario", formattedEventData);
+      console.log("Evento creado correctamente:", response.data);
+  
+      
+    setNewEvent({
+      Fecha: "",
+      DescripcionActividad: "",
+      Direccion: "",
+      Hora: "",
+      CursoID: "",
+    });
+
+     
       setIsModalOpen(false);
     } catch (error) {
       console.log("Error al crear el nuevo evento:", error);
+      // toast.error("Error al crear el nuevo evento");
     }
   };
 
-  // Obtener la fecha actual en formato UTC
-  const currentDate = new Date();
-  const utcDate = currentDate.toISOString();
-
-  // Enviar la fecha UTC al servidor (simulado)
-  axios
-    .post("http://localhost:8000/crearEvento", { fecha: utcDate })
-    .then((response) => {
-      console.log("Evento creado correctamente");
-    })
-    .catch((error) => {
-      console.error("Error al crear evento:", error);
-    });
-
+    
   return (
     <main>
       <h5 className="text-xl font-bold mt-4 mb-2 text-black">Calendario</h5>
@@ -135,12 +200,14 @@ function CalendarioPage() {
           Aquí tienes un resumen de los eventos a los que asistir en INCO
           Academy
         </span>
-        <button
-          className="w-25 h-5 flex justify-center items-center bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 text-center text-sm"
-          onClick={() => setIsModalOpen(true)}
-        >
-          Nuevo Evento
-        </button>
+        <div className="flex justify-center items-center">
+          <button
+            className="evento-button flex justify-center items-center text-white px-4 py-2 rounded hover:bg-blue-600 text-center text-sm"
+            onClick={() => setIsModalOpen(true)}
+          >
+            Nuevo Evento
+          </button>
+        </div>
       </div>
 
       {/* Modal para crear nuevo evento */}
@@ -148,7 +215,6 @@ function CalendarioPage() {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-800 bg-opacity-75">
           <div className="modal-calendar w-1/2 bg-white p-6 rounded-lg">
             <div className="flex justify-between mb-4">
-              <h3 className="text-xl font-bold">Crear Nuevo Evento</h3>
               <button
                 className="bg-gray-300 text-black px-4 py-2 rounded"
                 onClick={() => setIsModalOpen(false)}
@@ -163,7 +229,7 @@ function CalendarioPage() {
               onChange={handleInputChange}
               className="mb-4 text-black"
             />
-            <input
+             <input
               type="text"
               name="DescripcionActividad"
               value={newEvent.DescripcionActividad}
@@ -269,6 +335,13 @@ function CalendarioPage() {
               {selectedEvent.Fecha}
             </p>
             <p className="text-black">
+            <FontAwesomeIcon
+                    icon={faClock}
+                    style={{ color: "#007aec" }}
+                  />{" "}
+              {selectedEvent.Hora}
+            </p>
+            <p className="text-black">
               <FontAwesomeIcon
                 icon={faLocationDot}
                 style={{ color: "#007aff" }}
@@ -286,10 +359,7 @@ function CalendarioPage() {
                   <span className="ml-1">{selectedEvent.curso.Docente}</span>
                 </p>
                 <p className="text-black flex items-center">
-                  <FontAwesomeIcon
-                    icon={faClock}
-                    style={{ color: "#007aec" }}
-                  />
+                <FontAwesomeIcon icon={faHourglass} style={{color: "#007aff",}} />
                   <span className="ml-1">{selectedEvent.curso.Duracion}</span>
                 </p>
               </>
