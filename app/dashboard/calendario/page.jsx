@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./calendar.css";
+import moment from 'moment';
 // import { toast } from "react-toastify";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -19,9 +20,9 @@ function CalendarioPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [newEvent, setNewEvent] = useState({
     Fecha: "",
+    Hora: "",
     DescripcionActividad: "",
     Direccion: "",
-    Hora: "",
     CursoID: "",
   });
 
@@ -81,115 +82,78 @@ function CalendarioPage() {
     setIsModalOpen(false);
   };
 
-  //Funcion para recoger nuevos campos al crear un nuevo evento
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    let fecha; 
-
-    if (name === "Fecha") {
-      const fecha = value.split("T")[0];
-      setNewEvent((prevState) => ({
-        ...prevState,
-        Fecha: fecha,
-      }));
-    } else if (name === "Hora") {
-      const hora = value.split("T")[1];
-      setNewEvent((prevState) => ({
-        ...prevState,
-        Hora: hora,
-      }));
-    } else {
+  
+    // Verificar si el valor no es nulo o indefinido
+    if (value !== null && value !== undefined) {
       setNewEvent((prevState) => ({
         ...prevState,
         [name]: value,
       }));
     }
+  }; 
+  
 
     
-    console.log("Nuevo dato:", value)    
-    setNewEvent((newEvent) => ({
-      ...newEvent,
-      [name]: value,
-    }));
-  };
-
-  //Envio de formulario
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-    // Verificar que newEvent no sea null o undefined
-  if (!newEvent) {
-    console.error("El evento es nulo o indefinido");
-    return;
-  }
-
-  // Verificar que todas las propiedades de newEvent estén definidas
-  const { Fecha, DescripcionActividad, Direccion, Hora, CursoID } = newEvent;
-  if (!Fecha || !DescripcionActividad || !Direccion || !Hora || !CursoID) {
-    console.error("Alguna propiedad de newEvent es nula o indefinida");
-    return;
-  }
-
-  // Verificar que las propiedades de newEvent no estén vacías después de recortar los espacios en blanco
-  if (
-    Fecha.trim() === "" ||
-    DescripcionActividad.trim() === "" ||
-    Direccion.trim() === "" ||
-    Hora.trim() === "" ||
-    CursoID.trim() === ""
-  ) {
-    console.error("Alguna propiedad de newEvent está vacía después de recortar los espacios en blanco");
-    return;
-  }
-
-
+         
     if (
-      newEvent.Fecha.trim() === "" ||
-      newEvent.DescripcionActividad.trim() === "" ||
-      newEvent.Direccion.trim() === "" ||
-      newEvent.Hora.trim() === "" ||
-      newEvent.CursoID.trim() === ""
+      !newEvent.Fecha ||
+      !newEvent.Hora ||
+      !newEvent.DescripcionActividad ||
+      !newEvent.Direccion ||
+      !newEvent.CursoID
     ) {
-      // toast.error("Por favor, completa todos los campos obligatorios");
+      console.error("Alguna propiedad de newEvent es nula o indefinida");
       return;
     }
-
-    // Validar el formato de la fecha
-  const dateRegex = /^\d{4}-\d{2}-\d{2}$/; // Expresión regular para el formato yyyy-MM-dd
-  if (!dateRegex.test(newEvent.Fecha)) {
-    console.error("El formato de la fecha no es válido:", newEvent.Fecha);
-    // Agrega un mensaje de error o manejo adecuado para la fecha con formato incorrecto
-    return;
-  }
-
-    try {
-      // Convierte la fecha y hora a un formato adecuado antes de enviarla al servidor
-    const formattedDate = new Date(newEvent.Fecha + "T" + newEvent.Hora + ":00");
-    const formattedEventData = {
-      ...newEvent,
-      Fecha: formattedDate.toISOString() // Convierte la fecha a formato ISO
-    };
-
-      // Enviar la fecha UTC al servidor (simulado)
-      const response = await axios.post("http://localhost:8000/calendario", formattedEventData);
-      console.log("Evento creado correctamente:", response.data);
   
-      
-    setNewEvent({
-      Fecha: "",
-      DescripcionActividad: "",
-      Direccion: "",
-      Hora: "",
-      CursoID: "",
-    });
+    // Verificar que las propiedades de newEvent no estén vacías después de recortar los espacios en blanco
+    if (
+      newEvent.Fecha.trim() === "" ||
+      newEvent.Hora.trim() === "" ||
+      newEvent.DescripcionActividad.trim() === "" ||
+      newEvent.Direccion.trim() === "" ||
+      newEvent.CursoID.trim() === ""
+    ) {
+      console.error("Alguna propiedad de newEvent está vacía después de recortar los espacios en blanco");
+      return;
+    }
+  
+    // Validar el formato de la fecha
+    const dateRegex = /^\d{4}-\d{2}-\d{2}$/; // Expresión regular para el formato yyyy-MM-dd
+    const timeRegex = /^\d{2}:\d{2}$/; // Expresión regular para el formato hh:mm
+    if (!dateRegex.test(newEvent.Fecha) || !timeRegex.test(newEvent.Hora)) {
+      console.error("El formato de la fecha o la hora no es válido. El formato debe ser yyyy-MM-dd para la fecha y hh:mm para la hora");
+      // Agrega un mensaje de error o manejo adecuado para la fecha o la hora con formato incorrecto
+      return;
+}
 
-     
+  
+    // Si la fecha tiene el formato correcto, continuar con el envío de datos al servidor
+    try {
+      const response = await axios.post("http://localhost:8000/calendario", newEvent);
+      console.log("Evento creado correctamente:", response.data);
+      
+      // Restablecer el estado del nuevo evento después de enviar los datos
+      setNewEvent({
+        Fecha: "",
+        Hora: "",
+        DescripcionActividad: "",
+        Direccion: "",
+        CursoID: "",
+      });
+      
       setIsModalOpen(false);
     } catch (error) {
       console.log("Error al crear el nuevo evento:", error);
-      // toast.error("Error al crear el nuevo evento");
+      // Agregar un manejo adecuado para el error al crear el evento
     }
   };
+   // //Envio de formulario
+  
 
     
   return (
@@ -229,6 +193,13 @@ function CalendarioPage() {
               onChange={handleInputChange}
               className="mb-4 text-black"
             />
+            <input
+              type="time"
+              name="Hora"
+              value={newEvent.Hora}
+              onChange={handleInputChange}
+              className="mb-4 text-black"
+            />
              <input
               type="text"
               name="DescripcionActividad"
@@ -245,13 +216,7 @@ function CalendarioPage() {
               placeholder="Dirección"
               className="mb-4  text-black"
             />
-            <input
-              type="time"
-              name="Hora"
-              value={newEvent.Hora}
-              onChange={handleInputChange}
-              className="mb-4  text-black"
-            />
+            
             <input
               type="text"
               name="CursoID"
@@ -296,7 +261,7 @@ function CalendarioPage() {
             {calendarioData &&
               calendarioData.map(
                 (evento) =>
-                  evento.Fecha === day.toISOString().split("T")[0] && (
+                  moment(evento.Fecha).format("YYY-MM-DD") === moment(day).format("YYY-MM-DD") && (
                     <div
                       key={evento.ID}
                       className="cursor-pointer bg-blue-500 text-white p-1 mb-1 rounded text-sm"
