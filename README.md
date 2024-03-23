@@ -1,6 +1,6 @@
-# README del Proyecto Classroom
+# Proyecto Classroom INCO Academy 🖥📘📏
 
-¡Bienvenido al proyecto Classroom! Esta plataforma está diseñada para proporcionar a estudiantes y profesores una experiencia educativa agradable, permitiendo a los estudiantes acceder a sus cursos matriculados y dando a los profesores la capacidad de administrar, crear, editar y eliminar cursos.
+¡Bienvenido al proyecto Classroom de INCO Academy! Esta plataforma está diseñada para proporcionar a estudiantes y profesores una experiencia educativa agradable, permitiendo a los estudiantes acceder a sus cursos matriculados y dando a los profesores la capacidad de administrar, crear, editar y eliminar cursos.
 
 ## Tecnologías Utilizadas
 
@@ -24,15 +24,15 @@ Siga estos pasos para clonar y ejecutar el proyecto localmente:
 1. **Clonar el Repositorio:**
    ```bash
    git clone https://github.com/your-username/classroom-project.git
-```
-2. **Navegar al Directorio del Proyecto:**
+
+2. **Clonar el Repositorio:**
    ```bash
-   cd classroom-project
-```
+   git clone https://github.com/your-username/classroom-project.git
+
 3. **Instalar las Dependencias:**
    ```bash
    npm install
-```
+
 4. **Configurar el Entorno de Desarrollo:**
 Crea un archivo .env en el directorio raíz del proyecto.
 Agregue las variables de entorno necesarias, como credenciales de la base de datos, claves de API, etc. Ejemplo:
@@ -45,7 +45,7 @@ DB_PASSWORD=tu_contraseña_de_base_de_datos
    ```bash
    npm run dev
 
-```
+
 ## Acceder a la Aplicación
 
 Una vez que la aplicación esté en ejecución, puedes acceder a ella en tu navegador web en [http://localhost:3000](http://localhost:3000).
