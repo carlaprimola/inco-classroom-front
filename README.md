@@ -15,7 +15,7 @@
 
 - **Base de Datos:**
   - MySQL (Workbench)
-  - AWS (para implementación)
+  - AWS (para subir a la nube)
 
 ## Cómo Usar
 
@@ -25,9 +25,9 @@ Siga estos pasos para clonar y ejecutar el proyecto localmente:
    ```bash
    git clone https://github.com/your-username/classroom-project.git
 
-2. **Clonar el Repositorio:**
+2. **Navegar al directorio del Proyecto:**
    ```bash
-   git clone https://github.com/your-username/classroom-project.git
+   cd inco-classroom-front
 
 3. **Instalar las Dependencias:**
    ```bash
@@ -35,11 +35,11 @@ Siga estos pasos para clonar y ejecutar el proyecto localmente:
 
 4. **Configurar el Entorno de Desarrollo:**
 Crea un archivo .env en el directorio raíz del proyecto.
-Agregue las variables de entorno necesarias, como credenciales de la base de datos, claves de API, etc. Ejemplo:
+Agrega las variables de entorno necesarias, como credenciales de la base de datos, claves de API, etc. Ejemplo:
 ```bash
    DB_HOST=tu_host_de_base_de_datos
-DB_USER=tu_usuario_de_base_de_datos
-DB_PASSWORD=tu_contraseña_de_base_de_datos
+  DB_USER=tu_usuario_de_base_de_datos
+  DB_PASSWORD=tu_contraseña_de_base_de_datos
 ```
 5. **Ejecutar la aplicación:**
    ```bash
@@ -58,8 +58,8 @@ La parte trasera del proyecto está alojada en otro repositorio. Puedes encontra
 
 ¡Conoce al equipo que hace que esto suceda! 💪
 
-- **Carla** - Product Owner 📋
 - **Mayo** - Scrum Master 🕶️
+- **Carla** - Product Owner 📋
 - **Alexis** - Desarrollador 🖥️
 - **Shan** - Desarrollador 📱
 
@@ -75,6 +75,6 @@ La parte trasera del proyecto está alojada en otro repositorio. Puedes encontra
 
 ## Licencia
 
-Este proyecto está bajo la [Licencia MIT](LICENSE). ¡Siéntete libre de usar y modificar este proyecto para tus propios fines!
+Este proyecto está bajo la [Licencia Creative Commons](LICENSE). ¡Siéntete libre de usar y modificar este proyecto para tus propios fines!
 
 
