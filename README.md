@@ -15,7 +15,7 @@
 
 - **Base de Datos:**
   - MySQL (Workbench)
-  - AWS (para subir a la nube)
+  - PLESK
     
  - **Test:**
  - Cypress para frontend
