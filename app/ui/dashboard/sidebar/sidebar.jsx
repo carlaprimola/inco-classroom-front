@@ -48,7 +48,7 @@ const Sidebar = ({ searchParams }) => {
             list: [
                 {
                     title: "Promedio",
-                    path: "/dashboard/revenue",
+                    path: "/dashboard/notas",
                     icon: <MdQueryStats />,
                 },
                 {
