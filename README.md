@@ -16,6 +16,11 @@
 - **Base de Datos:**
   - MySQL (Workbench)
   - AWS (para subir a la nube)
+    
+ - **Test:**
+ - Cypress para frontend
+ - Jest para backend
+
 
 ## Cómo Usar
 
