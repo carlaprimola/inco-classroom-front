@@ -1,43 +1,4 @@
 "use client"
-// import React, { useState, useEffect } from "react";
-// import axios from "axios";
-
-// const AcademicTracking = () => {
-//   const [academicData, setAcademicData] = useState(null);
-
-//   useEffect(() => {
-//     const fetchAcademicData = async () => {
-//       const userId = localStorage.getItem("user");
-//       try {
-//         const response = await axios.get(`http://localhost:8000/student/${userId}`);
-//         setAcademicData(response.data.seguimientoacademico);
-//       } catch (error) {
-//         console.error("Error fetching academic data:", error);
-//       }
-//     };
-
-//     fetchAcademicData();
-//   }, []);
-
-//   if (!academicData) {
-//     return <div>Loading...</div>;
-//   }
-
-//   return (
-//     <div>
-//       <h2>Academic Tracking</h2>
-//       <p>Curso: {academicData.Curso}</p>
-//       <p>Actividades: {academicData.Actividades}</p>
-//       <p>Comentarios: {academicData.Comentarios}</p>
-//       <p>Notas: {academicData.Notas}</p>
-//       <p>Estado: {academicData.Estado}</p>
-//     </div>
-//   );
-// };
-
-// export default AcademicTracking;
-
-
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 

@@ -8,7 +8,7 @@ import ButtonDashboard from '../button/ButtonDashboard';
 
 const Sidebar = ({ searchParams, isOpen, toggleSidebar }) => {
     const [userData, setUserData] = useState(null);
-    const [sidebarWidth, setSidebarWidth] = useState('full'); // Estado para controlar el ancho del sidebar
+    // const [sidebarWidth, setSidebarWidth] = useState('full'); // Estado para controlar el ancho del sidebar
 
     useEffect(() => {
         const loadUserData = async () => {
@@ -76,16 +76,12 @@ const Sidebar = ({ searchParams, isOpen, toggleSidebar }) => {
         menuItems[0].list = menuItems[0].list.filter(item => item.title !== "Configurar Cursos");
     }
 
-    // Función para cambiar el ancho del sidebar
-    const handleToggleWidth = () => {
-        setSidebarWidth(sidebarWidth === 'full' ? 'collapsed' : 'full');
-    };
 
     return (
-        <div className={`${styles.container} ${styles[sidebarWidth]}`}> {/* Aplica la clase condicional para cambiar el ancho */}
+        <div className={`${styles.container}`}> {/* Aplica la clase condicional para cambiar el ancho */}
             <div className="flex items-center justify-between p-4 ">
                 <span className="absolute cursor-pointer right-1 top-[-10px]">
-                    <ButtonDashboard onClick={handleToggleWidth} /> {/* Llama a la función cuando se haga clic */}
+                   
                 </span>
                 <div className="flex items-center justify-center">
                     <div className=" flex flex-row-reverse flex-nowrap items-end">
