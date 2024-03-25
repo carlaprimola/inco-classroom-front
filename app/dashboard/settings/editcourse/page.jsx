@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Link from "next/link";
+import { toast } from "react-toastify";
 
 const EditCoursePage = () => {
     const [curso, setCurso] = useState({
@@ -34,8 +35,7 @@ const EditCoursePage = () => {
             const params = new URLSearchParams(window.location.search);
             const id = params.get("id");
             await axios.put(`http://localhost:8000/cursos/${id}`, curso);
-            console.log("Curso actualizado correctamente");
-            window.location.href = "/dashboard/settings";
+            toast.success("¡Curso actualizado correctamente!");
         } catch (error) {
             console.error("Error updating curso:", error);
         }
@@ -47,6 +47,15 @@ const EditCoursePage = () => {
             ...prevCurso,
             [name]: value
         }));
+    };
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        try {
+            await updateCurso();
+        } catch (error) {
+            console.error("Error updating curso:", error);
+        }
     };
 
     return (
@@ -64,7 +73,7 @@ const EditCoursePage = () => {
                 </Link>
             </div>
             <div className="p-6 space-y-6">
-                <form onSubmit={updateCurso}>
+                <form onSubmit={handleSubmit}>
                     <div className="grid grid-cols-6 gap-6">
                         <div className="col-span-6 sm:col-span-3">
                             <label htmlFor="NombreCurso" className="text-sm font-medium text-gray-900 block mb-2">Nombre del Curso</label>
@@ -128,7 +137,7 @@ const EditCoursePage = () => {
                                 onChange={handleInputChange}
                                 className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
                                 placeholder="ID del Contenido del Curso"
-                                required
+                            
                             />
                         </div>
                     </div>
@@ -140,7 +149,7 @@ const EditCoursePage = () => {
         </div>
     );
     
-      
+    
 
 }
 

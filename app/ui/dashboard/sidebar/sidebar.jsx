@@ -43,6 +43,15 @@ const Sidebar = ({ searchParams, isOpen, toggleSidebar }) => {
                     path: "/dashboard/cursos",
                     icon: <MdBook />,
                 },
+            ],
+        },
+        {
+            list: [
+                {
+                    title: "Promedio",
+                    path: "/dashboard/notas",
+                    icon: <MdQueryStats />,
+                },
                 {
                     title: "Calendario",
                     path: "/dashboard/teams",
