@@ -96,64 +96,120 @@ function CalendarioPage() {
   
 
     
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+//   const handleSubmit = async (event) => {
+//     event.preventDefault();
          
-    if (
-      !newEvent.Fecha ||
-      !newEvent.Hora ||
-      !newEvent.DescripcionActividad ||
-      !newEvent.Direccion ||
-      !newEvent.CursoID
-    ) {
-      console.error("Alguna propiedad de newEvent es nula o indefinida");
-      return;
-    }
+//     if (
+//       !newEvent.Fecha ||
+//       !newEvent.Hora ||
+//       !newEvent.DescripcionActividad ||
+//       !newEvent.Direccion ||
+//       !newEvent.CursoID
+//     ) {
+//       console.error("Alguna propiedad de newEvent es nula o indefinida");
+//       return;
+//     }
   
-    // Verificar que las propiedades de newEvent no estén vacías después de recortar los espacios en blanco
-    if (
-      newEvent.Fecha.trim() === "" ||
-      newEvent.Hora.trim() === "" ||
-      newEvent.DescripcionActividad.trim() === "" ||
-      newEvent.Direccion.trim() === "" ||
-      newEvent.CursoID.trim() === ""
-    ) {
-      console.error("Alguna propiedad de newEvent está vacía después de recortar los espacios en blanco");
-      return;
-    }
+//     // Verificar que las propiedades de newEvent no estén vacías después de recortar los espacios en blanco
+//     if (
+//       newEvent.Fecha.trim() === "" ||
+//       newEvent.Hora.trim() === "" ||
+//       newEvent.DescripcionActividad.trim() === "" ||
+//       newEvent.Direccion.trim() === "" ||
+//       newEvent.CursoID.trim() === ""
+//     ) {
+//       console.error("Alguna propiedad de newEvent está vacía después de recortar los espacios en blanco");
+//       return;
+//     }
   
-    // Validar el formato de la fecha
-    const dateRegex = /^\d{4}-\d{2}-\d{2}$/; // Expresión regular para el formato yyyy-MM-dd
-    const timeRegex = /^\d{2}:\d{2}$/; // Expresión regular para el formato hh:mm
-    if (!dateRegex.test(newEvent.Fecha) || !timeRegex.test(newEvent.Hora)) {
-      console.error("El formato de la fecha o la hora no es válido. El formato debe ser yyyy-MM-dd para la fecha y hh:mm para la hora");
-      // Agrega un mensaje de error o manejo adecuado para la fecha o la hora con formato incorrecto
-      return;
-}
+//     // Validar el formato de la fecha
+//     const dateRegex = /^\d{4}-\d{2}-\d{2}$/; // Expresión regular para el formato yyyy-MM-dd
+//     const timeRegex = /^\d{2}:\d{2}$/; // Expresión regular para el formato hh:mm
+//     if (!dateRegex.test(newEvent.Fecha) || !timeRegex.test(newEvent.Hora)) {
+//       console.error("El formato de la fecha o la hora no es válido. El formato debe ser yyyy-MM-dd para la fecha y hh:mm para la hora");
+//       // Agrega un mensaje de error o manejo adecuado para la fecha o la hora con formato incorrecto
+//       return;
+// }
 
   
-    // Si la fecha tiene el formato correcto, continuar con el envío de datos al servidor
-    try {
-      const response = await axios.post("http://localhost:8000/calendario", newEvent);
-      console.log("Evento creado correctamente:", response.data);
+//     // Si la fecha tiene el formato correcto, continuar con el envío de datos al servidor
+//     try {
+//       const response = await axios.post("http://localhost:8000/calendario", newEvent);
+//       console.log("Evento creado correctamente:", response.data);
       
-      // Restablecer el estado del nuevo evento después de enviar los datos
-      setNewEvent({
-        Fecha: "",
-        Hora: "",
-        DescripcionActividad: "",
-        Direccion: "",
-        CursoID: "",
-      });
+//       // Restablecer el estado del nuevo evento después de enviar los datos
+//       setNewEvent({
+//         Fecha: "",
+//         Hora: "",
+//         DescripcionActividad: "",
+//         Direccion: "",
+//         CursoID: "",
+//       });
       
-      setIsModalOpen(false);
-    } catch (error) {
-      console.log("Error al crear el nuevo evento:", error);
-      // Agregar un manejo adecuado para el error al crear el evento
-    }
-  };
+//       setIsModalOpen(false);
+//     } catch (error) {
+//       console.log("Error al crear el nuevo evento:", error);
+//       // Agregar un manejo adecuado para el error al crear el evento
+//     }
+//   };
    // //Envio de formulario
   
+const handleSubmit = async (event) => {
+  event.preventDefault();
+
+  // Verificar si alguna propiedad de newEvent es nula o indefinida
+  if (
+    !newEvent.Fecha ||
+    !newEvent.Hora ||
+    !newEvent.DescripcionActividad ||
+    !newEvent.Direccion ||
+    !newEvent.CursoID
+  ) {
+    console.error("Alguna propiedad de newEvent es nula o indefinida");
+    return;
+  }
+
+  // Verificar si alguna propiedad de newEvent está vacía después de recortar los espacios en blanco
+  if (
+    newEvent.Fecha.trim() === "" ||
+    newEvent.Hora.trim() === "" ||
+    newEvent.DescripcionActividad.trim() === "" ||
+    newEvent.Direccion.trim() === "" ||
+    newEvent.CursoID.trim() === ""
+  ) {
+    console.error("Alguna propiedad de newEvent está vacía después de recortar los espacios en blanco");
+    return;
+  }
+
+  // Validar el formato de la fecha y la hora
+  const dateRegex = /^\d{4}-\d{2}-\d{2}$/; // Expresión regular para el formato yyyy-MM-dd
+  const timeRegex = /^\d{2}:\d{2}$/; // Expresión regular para el formato hh:mm
+  if (!dateRegex.test(newEvent.Fecha) || !timeRegex.test(newEvent.Hora)) {
+    console.error("El formato de la fecha o la hora no es válido. El formato debe ser yyyy-MM-dd para la fecha y hh:mm para la hora");
+    // Agrega un mensaje de error o manejo adecuado para la fecha o la hora con formato incorrecto
+    return;
+  }
+
+  // Si la fecha y la hora tienen el formato correcto, continuar con el envío de datos al servidor
+  try {
+    const response = await axios.post("http://localhost:8000/calendario", newEvent);
+    console.log("Evento creado correctamente:", response.data);
+    
+    // Restablecer el estado del nuevo evento después de enviar los datos
+    setNewEvent({
+      Fecha: "",
+      Hora: "",
+      DescripcionActividad: "",
+      Direccion: "",
+      CursoID: "",
+    });
+    
+    setIsModalOpen(false);
+  } catch (error) {
+    console.log("Error al crear el nuevo evento:", error);
+    // Agregar un manejo adecuado para el error al crear el evento
+  }
+};
 
     
   return (
