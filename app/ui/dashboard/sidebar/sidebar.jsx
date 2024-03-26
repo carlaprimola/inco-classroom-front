@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { fetchUsers } from "/app/lib/data.js";
 import MenuLink from "./menuLink/menuLink";
-import styles from "./sidebar.module.css";
-import { MdDashboard, MdSupervisedUserCircle, MdBook, MdQueryStats, MdCalendarMonth, MdOutlineSettings, MdHelpCenter, MdLogout } from "react-icons/md";
+import { MdDashboard, MdSupervisedUserCircle, MdBook, MdQueryStats, MdCalendarMonth, MdOutlineSettings, MdHelpCenter, MdLogout, MdMenu } from "react-icons/md";
 import Link from 'next/link';
+import styles from "./sidebar.module.css";
+import ButtonDashboard from '../button/ButtonDashboard';
 
-const Sidebar = ({ searchParams }) => {
+const Sidebar = ({ searchParams, isOpen, toggleSidebar }) => {
     const [userData, setUserData] = useState(null);
     const [showModal, setShowModal] = useState(false);
     
@@ -32,7 +33,6 @@ const Sidebar = ({ searchParams }) => {
                 console.error('Error fetching user data:', error);
             }
         };
-
         loadUserData();
     }, [searchParams]);
 
@@ -40,7 +40,7 @@ const Sidebar = ({ searchParams }) => {
 
     const menuItems = [
         {
-            title: "Pages",
+            title: "",
             list: [
                 {
                     title: "Inicio",
@@ -66,14 +66,9 @@ const Sidebar = ({ searchParams }) => {
                 },
                 {
                     title: "Calendario",
-                    path: "/dashboard/teams",
+                    path: "/dashboard/calendario",
                     icon: <MdCalendarMonth />,
                 },
-            ],
-        },
-        {
-            title: "Configuración",
-            list: [
                 {
                     title: "Configurar Cursos",
                     path: "/dashboard/settings",
@@ -98,25 +93,31 @@ const Sidebar = ({ searchParams }) => {
 
     // Si el usuario es un estudiante, ocultar el elemento "Configurar Cursos" del menú
     if (!isTeacher) {
-        menuItems[2].list = menuItems[2].list.filter(item => item.title !== "Configurar Cursos");
+        menuItems[0].list = menuItems[0].list.filter(item => item.title !== "Configurar Cursos");
     }
 
+    // Función para cambiar el ancho del sidebar
+    const handleToggleWidth = () => {
+        setSidebarWidth(sidebarWidth === 'full' ? 'collapsed' : 'full');
+    };
+
     return (
-        <div className={styles.container}>
-            <div className="flex items-center justify-center">
-                <div className=" flex flex-row-reverse flex-nowrap items-end">
-                    <div className={`${styles.userImage} rounded-full overflow-hidden w-24 h-24 mb-3`}>
-                        <img
-                            className="object-cover w-full h-full"
-                            src={userData ? userData.imgProfile : ''}
-                            alt={userData ? userData.name : ''}
-                            width={100}
-                            height={100}
-                        />
-                    </div>
-                    <div className={`${styles.userDetail} p-4`}>
-                        <span>{userData ? userData.Nombre : 'Cargando...'}</span>
-                        <span className={styles.userTitle}>{userData ? userData.role.TipoRol : 'Cargando...'} </span>
+        <div className={`${styles.container} ${styles[sidebarWidth]}`}> {/* Aplica la clase condicional para cambiar el ancho */}
+            <div className="flex items-center justify-between p-4 ">
+                <span className="absolute cursor-pointer right-1 top-[-10px]">
+                    <ButtonDashboard onClick={handleToggleWidth} /> {/* Llama a la función cuando se haga clic */}
+                </span>
+                <div className="flex items-center justify-center">
+                    <div className=" flex flex-row-reverse flex-nowrap items-end">
+                        <div className={`${styles.userImage} rounded-full overflow-hidden w-24 h-24 mb-3`}>
+                            <img
+                                className="object-cover w-full h-full"
+                                src={userData ? userData.imgProfile : ''}
+                                alt={userData ? userData.name : ''}
+                                width={100}
+                                height={100}
+                            />
+                        </div>
                     </div>
                 </div>
             </div>

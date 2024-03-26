@@ -1,36 +1,85 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Proyecto Classroom INCO Academy 🖥📘📏
 
-## Getting Started
+¡Bienvenido al proyecto Classroom de INCO Academy! Esta plataforma está diseñada para proporcionar a estudiantes y profesores una experiencia educativa agradable, permitiendo a los estudiantes acceder a sus cursos matriculados y dando a los profesores la capacidad de administrar, crear, editar y eliminar cursos.
 
-First, run the development server:
+## Tecnologías Utilizadas
 
+- **Frontend:**
+  - React
+  - Next.js
+  - Tailwind CSS
+
+- **Backend:**
+  - Node.js
+  - Express
+
+- **Base de Datos:**
+  - MySQL (Workbench)
+  - PLESK
+    
+ - **Test:**
+ - Cypress para frontend
+ - Jest para backend
+
+
+## Cómo Usar
+
+Siga estos pasos para clonar y ejecutar el proyecto localmente:
+
+1. **Clonar el Repositorio:**
+   ```bash
+   git clone https://github.com/your-username/classroom-project.git
+
+2. **Navegar al directorio del Proyecto:**
+   ```bash
+   cd inco-classroom-front
+
+3. **Instalar las Dependencias:**
+   ```bash
+   npm install
+
+4. **Configurar el Entorno de Desarrollo:**
+Crea un archivo .env en el directorio raíz del proyecto.
+Agrega las variables de entorno necesarias, como credenciales de la base de datos, claves de API, etc. Ejemplo:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+   DB_HOST=tu_host_de_base_de_datos
+  DB_USER=tu_usuario_de_base_de_datos
+  DB_PASSWORD=tu_contraseña_de_base_de_datos
 ```
+5. **Ejecutar la aplicación:**
+   ```bash
+   npm run dev
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Acceder a la Aplicación
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Una vez que la aplicación esté en ejecución, puedes acceder a ella en tu navegador web en [http://localhost:3000](http://localhost:3000).
 
-## Learn More
+## Repositorio del Backend
 
-To learn more about Next.js, take a look at the following resources:
+La parte trasera del proyecto está alojada en otro repositorio. Puedes encontrar el código en [este enlace](https://github.com/carlaprimola/inco-classroom-back.git).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Equipo
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+¡Conoce al equipo que hace que esto suceda! 💪
 
-## Deploy on Vercel
+- **Mayo** - Scrum Master 🕶️
+- **Carla** - Product Owner 📋
+- **Alexis** - Desarrollador 🖥️
+- **Shan** - Desarrollador 📱
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Contribuciones
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+¡Agradecemos las contribuciones de la comunidad! Si deseas contribuir a este proyecto, sigue estos pasos:
+
+1. Haz un fork del repositorio.
+2. Crea una nueva rama para tu función o corrección de errores.
+3. Realiza tus cambios y haz commits con mensajes descriptivos.
+4. Sube tus cambios a tu fork.
+5. Envía un pull request a la rama `develop` del repositorio principal.
+
+## Licencia
+
+Este proyecto está bajo la [Licencia Creative Commons](LICENSE). ¡Siéntete libre de usar y modificar este proyecto para tus propios fines!
+
+

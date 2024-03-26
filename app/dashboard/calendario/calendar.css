@@ -1,0 +1,14 @@
+.modal-calendar{
+    width: 30%;
+    object-fit: cover;
+}
+
+.modal-img{
+    width: 80%;
+    object-fit: cover;
+}
+
+.evento-button {
+    width: 20%;
+    background-color: rgba(0, 122, 255, 1);
+}
