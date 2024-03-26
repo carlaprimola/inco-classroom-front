@@ -23,7 +23,12 @@ const EditCoursePage = () => {
 
     const getCourseData = async (id) => {
         try {
-            const response = await axios.get(`http://localhost:8000/cursos/${id}`);
+            const token = localStorage.getItem("token"); // Obtener el token de usuario de localStorage
+            const response = await axios.get(`http://localhost:8000/cursos/${id}`, {
+                headers: {
+                    userstoken: token // Agregar el token de usuario como encabezado
+                }
+            });
             setCurso(response.data);
         } catch (error) {
             console.error("Error fetching curso:", error);
@@ -34,7 +39,12 @@ const EditCoursePage = () => {
         try {
             const params = new URLSearchParams(window.location.search);
             const id = params.get("id");
-            await axios.put(`http://localhost:8000/cursos/${id}`, curso);
+            const token = localStorage.getItem("token"); // Obtener el token de usuario de localStorage
+            await axios.put(`http://localhost:8000/cursos/${id}`, curso, {
+                headers: {
+                    userstoken: token // Agregar el token de usuario como encabezado
+                }
+            });
             toast.success("¡Curso actualizado correctamente!");
         } catch (error) {
             console.error("Error updating curso:", error);
