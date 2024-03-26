@@ -55,7 +55,6 @@ const Sidebar = ({ searchParams }) => {
             list: [
                 {
                     title: "Notas",
-                    title: "Notas",
                     path: "/dashboard/notas",
                     icon: <MdQueryStats />,
                 },
