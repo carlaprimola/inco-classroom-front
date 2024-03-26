@@ -13,6 +13,7 @@ const Homepage = () => {
     return (
         <UserProvider>
             <div>
+                
                 <main className="relative bg-gradient-to-r from-purple-600 to-blue-600 h-screen text-white overflow-hidden flex flex-col justify-center items-center">
                     <section className="absolute inset-0">
                         <video autoPlay muted loop playsInline type="video/mp4" src="/video/inco_video1.mp4" className="object-cover object-center w-full h-full"></video>
