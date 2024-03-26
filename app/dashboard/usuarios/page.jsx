@@ -1,56 +1,81 @@
 'use client';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import Image from 'next/image';
 
-import React, { useState, useEffect } from 'react';
-import { fetchUsers } from "/app/lib/data.js"; // Importa la función fetchUsers
-import Search from "/app/ui/dashboard/search/search";
-import styles from "/app/ui/dashboard/users/users.module.css";
-// Importa Image de 'next/image' si es necesario
-import Link from "next/link";
+const UserPage = () => {
+  const [usuarios, setUsuarios] = useState([]);
 
-const UsersPage = ({ searchParams }) => {
-    const [users, setUsers] = useState([]);
+  useEffect(() => {
+    const fetchUsuarios = async () => {
+      try {
+        const token = localStorage.getItem('token'); // Obtener el token de localStorage
+        const response = await axios.get("http://localhost:8000/usuarios", {
+          headers: {
+            'userstoken': token // Incluir el token en el encabezado
+          }
+        });
+        console.log("Datos de usuarios recibidos:", response.data);
+        setUsuarios(response.data);
+      } catch (error) {
+        console.error("Error fetching usuarios:", error);
+      }
+    };
 
-    useEffect(() => {
-        const loadUsers = async () => {
-            try {
-                const usersData = await fetchUsers(searchParams?.q || "", searchParams?.page || 1);
-                setUsers(usersData); // Asigna directamente los datos de usuarios al estado de usuarios
-            } catch (error) {
-                console.error('Error fetching users:', error);
-            }
-        };
+    fetchUsuarios();
+  }, []);
 
-        loadUsers();
-    }, [searchParams]);
-
-    return (
-        <div className={styles.container}>
-            <div className={styles.top}>
-                <Search placeholder="Search for a user..." />
-                <Link className='text-black' href="/dashboard/users/add">
-                    <button className= {styles.addButton}>Add New</button>
-                </Link>
-            </div>
-            <div className="bg-gray-100 min-h-screen py-16">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                        {users.map(user => (
-                            <div key={user.ID} className="bg-white rounded-lg shadow-md overflow-hidden">
-                                {/* Agrega las propiedades del usuario que deseas mostrar */}
-                                <div className="p-6 text-black ">
-                                    <h2 className="text-xl font-semibold mb-2">{user.Nombre}</h2>
-                                    <p>Email: {user.Email}</p>
-                                    {/* Mostrar el rol del usuario */}
-                                    <p>Rol: {user.role.TipoRol}</p>
-                                </div>
-                            </div>
-                        ))}
+  return (
+    <main>
+      <h2 className="text-2xl font-bold mb-4 text-gray-800 mt-5">Listado de Usuarios</h2>
+      <table className="min-w-full divide-y divide-gray-200 overflow-x-auto">
+        <thead className="bg-gray-50">
+          <tr>
+            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              Nombre
+            </th>
+            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              Email
+            </th>
+            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              Tipo
+            </th>
+          </tr>
+        </thead>
+        <tbody className="bg-white divide-y divide-gray-200">
+          {usuarios.map((usuario) => (
+            <tr key={usuario.ID}>
+              <td className="px-6 py-4 whitespace-nowrap">
+                <div className="flex items-center">
+                  <div className="flex-shrink-0 h-10 w-10">
+                    <Image 
+                      src={usuario.imgProfile} 
+                      alt={`Imagen de ${usuario.Nombre}`} 
+                      width={40} 
+                      height={40} 
+                      className="rounded-full"
+                    />
+                  </div>
+                  <div className="ml-4">
+                    <div className="text-sm font-medium text-gray-900">
+                      {usuario.Nombre}
                     </div>
+                  </div>
                 </div>
-            </div>
-        </div>
-    )
+              </td>
+              <td className="px-6 py-4 whitespace-nowrap">
+                <p className="text-sm text-gray-500">{usuario.Email}</p>
+              </td>
+              <td className="px-6 py-4 whitespace-nowrap">
+                <p className="text-sm text-gray-500">{usuario.role && usuario.role.TipoRol}</p>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </main>
+  );
 };
 
-export default UsersPage;
+export default UserPage;
 
