@@ -216,6 +216,9 @@ const Sidebar = ({ searchParams }) => {
                     path: "/dashboard/usuarios",
                     icon: <MdSupervisedUserCircle />,
                 },
+        
+                
+                
             ],
         },
         {
@@ -230,15 +233,10 @@ const Sidebar = ({ searchParams }) => {
                     path: "/dashboard/calendario",
                     icon: <MdCalendarMonth />,
                 },
-            ],
-        },
-        {
-            title: "Configuración",
-            list: [
                 {
-                    title: isTeacher ? "Configurar Cursos" : "Mis Cursos",
-                    path: isTeacher ? "/dashboard/settings" : "/dashboard/miscursos",
-                    icon: <MdBook />,
+                    title: "Configurar Cursos",
+                    path: "/dashboard/settings",
+                    icon: <MdOutlineSettings />,
                 },
             ],
         },
