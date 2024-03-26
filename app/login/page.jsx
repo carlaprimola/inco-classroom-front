@@ -53,14 +53,7 @@ const Login = () => {
                             onChange={(e) => setPassword(e.target.value)}
                         />
                         {error && <p className="text-red-500">{error}</p>}
-                        <div className="text-right">
-                            <a
-                                href=""
-                                className="italic text-white/50 text-sm underline decoration-violet-500 text-violet-500 hover:text-white transition"
-                            >
-                                Forget your Password?
-                            </a>
-                        </div>
+                        
                         <ButtonLogin text="Enviar" onClick={handleLogin} className="bg-[#007AFF]"/>
                     </div>
                 </div>
