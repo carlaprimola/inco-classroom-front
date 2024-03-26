@@ -26,6 +26,7 @@ const UsersPage = ({ searchParams }) => {
 
     return (
         <UserProvider>
+
             <div className={styles.container}>
                 <MainInfo/>
             </div>
