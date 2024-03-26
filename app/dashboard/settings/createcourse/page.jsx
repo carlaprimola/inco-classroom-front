@@ -13,6 +13,15 @@ const CreateCoursePage = () => {
         contenidoCursoID: "" 
     });
 
+     // Función para obtener el token de usuario de localStorage
+    const getUserToken = () => {
+        return localStorage.getItem("token");
+    };
+
+    const getUserRole = () => {
+        return localStorage.getItem("role");
+    };
+
     const handleSubmit = async (event) => {
         event.preventDefault();
         if (
@@ -24,16 +33,28 @@ const CreateCoursePage = () => {
           toast.error("Por favor complete los campos obligatorios");
           return;
         }
+
         try {
-          await axios.post(`http://localhost:8000/cursos`, curso);
-          console.log("Curso creado correctamente");
-          toast.success("Curso creado correctamente");
-          // Puedes redirigir al usuario a la página de configuración aquí si lo deseas
-        } catch (error) {
-          console.error("Error creating curso:", error);
-          toast.error("Error al crear el curso");
-        }
+            // Obtener el token de usuario de donde sea que lo tengas almacenado
+            const token = getUserToken(); 
+            const role = getUserRole();
+
+            await axios.post(`http://localhost:8000/cursos`, curso, {
+              headers: {
+                userstoken: token,
+                // Agregar el token de usuario a las cabeceras
+              },
+            });
+            
+            console.log("Curso creado correctamente");
+            toast.success("Curso creado correctamente");
+            // Puedes redirigir al usuario a la página de configuración aquí si lo deseas
+          } catch (error) {
+            console.error("Error creating curso:", error);
+            toast.error("Error al crear el curso");
+          }
       };
+
       
 
     const handleInputChange = (event) => {
