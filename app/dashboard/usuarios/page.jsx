@@ -1,4 +1,4 @@
-"use client"
+'use client';
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Image from 'next/image';
@@ -9,11 +9,16 @@ const UserPage = () => {
   useEffect(() => {
     const fetchUsuarios = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/usuarios");
-        
+        const token = localStorage.getItem('token'); // Obtener el token de localStorage
+        const response = await axios.get("http://localhost:8000/usuarios", {
+          headers: {
+            'userstoken': token // Incluir el token en el encabezado
+          }
+        });
+        console.log("Datos de usuarios recibidos:", response.data);
         setUsuarios(response.data);
       } catch (error) {
-        console.error("Error al mostrar los usuarios:", error);
+        console.error("Error fetching usuarios:", error);
       }
     };
 
@@ -73,3 +78,4 @@ const UserPage = () => {
 };
 
 export default UserPage;
+

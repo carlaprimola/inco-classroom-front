@@ -22,7 +22,7 @@ const Layout = ({ children }) => {
                 <section className={styles.content}>
                     <Navbar userData={userData} />
                     {children}
-                    <Footer />
+                    {/* <Footer /> */}
                     <ToastContainer /> 
                 </section>
             </main>
