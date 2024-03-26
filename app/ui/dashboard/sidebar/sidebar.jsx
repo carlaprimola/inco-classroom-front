@@ -37,11 +37,9 @@ const Sidebar = ({ searchParams }) => {
                     path: "/dashboard/usuarios",
                     icon: <MdSupervisedUserCircle />,
                 },
-                {
-                    title: "Cursos",
-                    path: "/dashboard/cursos",
-                    icon: <MdBook />,
-                },
+        
+                
+                
             ],
         },
         {
@@ -66,14 +64,22 @@ const Sidebar = ({ searchParams }) => {
                     path: "/dashboard/settings",
                     icon: <MdOutlineSettings />,
                 },
-            //     {
-            //         title: "Ayuda",
-            //         path: "/dashboard/help",
-            //         icon: <MdHelpCenter />,
-            //     },
             ],
         },
     ];
+    if (isTeacher) {
+        menuItems[0].list.push({
+            title: "Cursos",
+            path: "/dashboard/cursos",
+            icon: <MdBook />,
+        });
+    } else {
+        menuItems[0].list.push({
+            title: "Mis Cursos",
+            path: "/dashboard/miscursos",
+            icon: <MdBook />,
+        });
+    }
 
     // Si el usuario es un estudiante, ocultar el elemento "Configurar Cursos" del menú
     if (!isTeacher) {

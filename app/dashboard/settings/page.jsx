@@ -24,17 +24,27 @@ export default function CourseSettings() {
 
   const fetchCursos = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/cursos");
+      const token = localStorage.getItem('token'); // Obtener el token de localStorage
+      const response = await axios.get("http://localhost:8000/cursos", {
+        headers: {
+          'userstoken': token // Incluir el token en el encabezado
+        }
+      });
       console.log("Datos de cursos recibidos:", response.data);
       setCursos(response.data);
     } catch (error) {
       console.error("Error fetching cursos:", error);
     }
   };
-
+  
   const fetchContenidos = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/contenido");
+      const token = localStorage.getItem('token'); // Obtener el token de localStorage
+      const response = await axios.get("http://localhost:8000/contenido", {
+        headers: {
+          'userstoken': token // Incluir el token en el encabezado
+        }
+      });
       console.log("Datos de contenidos recibidos:", response.data);
       setContenidos(response.data);
     } catch (error) {
