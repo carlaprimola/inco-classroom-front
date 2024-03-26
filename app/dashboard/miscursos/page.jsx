@@ -12,7 +12,12 @@ const CourseDetails = () => {
     const fetchCourseData = async () => {
       const userId = localStorage.getItem("user");
       try {
-        const response = await axios.get(`http://localhost:8000/student/${userId}`);
+        const token = localStorage.getItem('token'); // Obtener el token de localStorage
+        const response = await axios.get(`http://localhost:8000/student/${userId}`, {
+          headers: {
+            'userstoken': token // Incluir el token en el encabezado
+          }
+        });
         setCourseData(response.data.curso);
       } catch (error) {
         console.error("Error fetching course data:", error);
