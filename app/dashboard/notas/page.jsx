@@ -8,8 +8,13 @@ const AcademicTracking = () => {
   useEffect(() => {
     const fetchAcademicData = async () => {
       const userId = localStorage.getItem("user");
+      const token = localStorage.getItem("token"); // Obtener el token del almacenamiento local
       try {
-        const response = await axios.get(`http://localhost:8000/student/${userId}`);
+        const response = await axios.get(`http://localhost:8000/student/${userId}`, {
+          headers: {
+            'userstoken': token // Incluir el token en el encabezado como 'userstoken'
+          }
+        });
         setAcademicData(response.data.seguimientoacademico);
       } catch (error) {
         console.error("Error fetching academic data:", error);
