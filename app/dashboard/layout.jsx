@@ -1,7 +1,7 @@
 // Layout.jsx
 'use client'
 import Navbar from "../ui/dashboard/navbar/navbar"
-import Sidebar from "../ui/dashboard/sidebar/Sidebar"
+import Sidebar from "../ui/dashboard/sidebar/sidebar.jsx"
 import styles from "../ui/dashboard/dashboard.module.css"
 import Footer from "../ui/dashboard/footer/footer"
 import { UserProvider, useUser } from '../contexts/UserContext'; // Importamos useUser
