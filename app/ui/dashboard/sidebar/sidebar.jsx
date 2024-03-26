@@ -14,12 +14,6 @@ const Sidebar = ({ searchParams, isOpen, toggleSidebar }) => {
         setShowModal(true);
     };
 
-    const handleConfirmLogout = () => {
-        // Aquí puedes redirigir al usuario a la página de inicio de sesión
-        // Puedes usar useHistory de react-router-dom o useRouter de next.js
-        setShowModal(false);
-    };
-
     const cancelLogout = () => {
         setShowModal(false);
     };
@@ -60,7 +54,7 @@ const Sidebar = ({ searchParams, isOpen, toggleSidebar }) => {
         {
             list: [
                 {
-                    title: "Promedio",
+                    title: "Notas",
                     path: "/dashboard/notas",
                     icon: <MdQueryStats />,
                 },
