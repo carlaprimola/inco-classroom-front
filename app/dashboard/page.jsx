@@ -2,6 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import { fetchUsers } from "/app/lib/data.js"; 
 import MainInfo from "../ui/dashboard/mainInfo/MainInfo"
+
+import Search from "/app/ui/dashboard/search/search";
 import styles from "/app/ui/dashboard/users/users.module.css";
 import Link from "next/link";
 import { UserProvider } from '../contexts/UserContext';
