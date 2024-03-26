@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { fetchUsers } from "/app/lib/data.js";
 import MenuLink from "./menuLink/menuLink";
-import { MdDashboard, MdSupervisedUserCircle, MdBook, MdQueryStats, MdCalendarMonth, MdOutlineSettings, MdHelpCenter, MdLogout, MdMenu } from "react-icons/md";
-import Link from 'next/link';
 import styles from "./sidebar.module.css";
-import ButtonDashboard from '../button/ButtonDashboard';
+import { MdDashboard, MdSupervisedUserCircle, MdBook, MdQueryStats, MdCalendarMonth, MdOutlineSettings, MdHelpCenter, MdLogout } from "react-icons/md";
+import Link from 'next/link';
 
-const Sidebar = ({ searchParams, isOpen, toggleSidebar }) => {
+const Sidebar = ({ searchParams }) => {
     const [userData, setUserData] = useState(null);
-    // const [sidebarWidth, setSidebarWidth] = useState('full'); // Estado para controlar el ancho del sidebar
 
     useEffect(() => {
         const loadUserData = async () => {
@@ -19,6 +17,7 @@ const Sidebar = ({ searchParams, isOpen, toggleSidebar }) => {
                 console.error('Error fetching user data:', error);
             }
         };
+
         loadUserData();
     }, [searchParams]);
 
@@ -26,7 +25,7 @@ const Sidebar = ({ searchParams, isOpen, toggleSidebar }) => {
 
     const menuItems = [
         {
-            title: "",
+            title: "Pages",
             list: [
                 {
                     title: "Inicio",
@@ -38,11 +37,9 @@ const Sidebar = ({ searchParams, isOpen, toggleSidebar }) => {
                     path: "/dashboard/usuarios",
                     icon: <MdSupervisedUserCircle />,
                 },
-                {
-                    title: "Cursos",
-                    path: "/dashboard/cursos",
-                    icon: <MdBook />,
-                },
+        
+                
+                
             ],
         },
         {
@@ -57,58 +54,70 @@ const Sidebar = ({ searchParams, isOpen, toggleSidebar }) => {
                     path: "/dashboard/teams",
                     icon: <MdCalendarMonth />,
                 },
+            ],
+        },
+        {
+            title: "Configuración",
+            list: [
                 {
                     title: "Configurar Cursos",
                     path: "/dashboard/settings",
                     icon: <MdOutlineSettings />,
                 },
-                {
-                    title: "Cerrar sesión",
-                    path: "/login",
-                    icon: <MdLogout />,
-                },
             ],
         },
     ];
+    if (isTeacher) {
+        menuItems[0].list.push({
+            title: "Cursos",
+            path: "/dashboard/cursos",
+            icon: <MdBook />,
+        });
+    } else {
+        menuItems[0].list.push({
+            title: "Mis Cursos",
+            path: "/dashboard/miscursos",
+            icon: <MdBook />,
+        });
+    }
 
     // Si el usuario es un estudiante, ocultar el elemento "Configurar Cursos" del menú
     if (!isTeacher) {
-        menuItems[0].list = menuItems[0].list.filter(item => item.title !== "Configurar Cursos");
+        menuItems[2].list = menuItems[2].list.filter(item => item.title !== "Configurar Cursos");
     }
 
-
     return (
-        <div className={`${styles.container}`}> {/* Aplica la clase condicional para cambiar el ancho */}
-            <div className="flex items-center justify-between p-4 ">
-                <span className="absolute cursor-pointer right-1 top-[-10px]">
-                   
-                </span>
-                <div className="flex items-center justify-center">
-                    <div className=" flex flex-row-reverse flex-nowrap items-end">
-                        <div className={`${styles.userImage} rounded-full overflow-hidden w-24 h-24 mb-3`}>
-                            <img
-                                className="object-cover w-full h-full"
-                                src={userData ? userData.imgProfile : ''}
-                                alt={userData ? userData.name : ''}
-                                width={100}
-                                height={100}
-                            />
-                        </div>
+        <div className={styles.container}>
+            <div className="flex items-center justify-center">
+                <div className=" flex flex-row-reverse flex-nowrap items-end">
+                    <div className={`${styles.userImage} rounded-full overflow-hidden w-24 h-24 mb-3`}>
+                        <img
+                            className="object-cover w-full h-full"
+                            src={userData ? userData.imgProfile : ''}
+                            alt={userData ? userData.name : ''}
+                            width={100}
+                            height={100}
+                        />
+                    </div>
+                    <div className={`${styles.userDetail} p-4`}>
+                        <span>{userData ? userData.Nombre : 'Cargando...'}</span>
+                        <span className={styles.userTitle}>{userData ? userData.role.TipoRol : 'Cargando...'} </span>
                     </div>
                 </div>
             </div>
-            <div className="flex-1 overflow-y-auto">
-                <ul className="py-4">
-                    {menuItems.map((cat, index) => (
-                        <li key={index}>
-                            <span className={`block w-full text-center md:text-left py-2 px-4 text-sm font-semibold ${isOpen ? 'md:pl-4' : ''}`}>{cat.title}</span>
-                            {cat.list.map((item, index) => (
-                                <MenuLink item={item} key={index} isOpen={isOpen} />
-                            ))}
-                        </li>
-                    ))}
-                </ul>
-            </div>
+            <ul className={styles.list}>
+                {menuItems.map((cat, index) => (
+                    <li key={index}>
+                        <span className={styles.username}>{userData ? userData.name : ''}</span>
+                        {cat.list.map((item, index) => (
+                            <MenuLink item={item} key={index} />
+                        ))}
+                    </li>
+                ))}
+            </ul>
+            <button className="w-[100%]">
+                <Link className={styles.logout} href='/login'><MdLogout />Cerrar sesión</Link>
+            </button>
         </div>
     );
 };
