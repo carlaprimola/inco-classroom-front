@@ -89,7 +89,6 @@ export default function CourseSettings() {
   
   return (
     <main>
-      {/* <h1 className="text-black">Administración de Cursos y Contenidos</h1> */}
       <div className="flex justify-center mb-3 mt-6">
         <button
           className={`w-40 h-12 ${
@@ -115,13 +114,6 @@ export default function CourseSettings() {
   
       {activeTab === "courses" && (
         <>
-          {/* <div className="flex justify-center mb-3">
-            <Link href="/dashboard/settings/createcourse">
-              <button className="w-40 h-12 bg-teal-400 text-white rounded-md mr-3 hover:bg-blue-800">
-                <FontAwesomeIcon icon={faPlus} /> Crear Curso
-              </button>
-            </Link>
-          </div> */}
           <div className="text-black   ">
             <div className="p-4 flex">
               <h2 className="text-3xl mt-2 ">Gestión de Cursos</h2>
@@ -184,13 +176,7 @@ export default function CourseSettings() {
       )}
       {activeTab === "content" && (
   <>
-    {/* <div className="flex justify-center mb-3">
-      <Link href="/dashboard/settings/createcontent">
-        <button className="w-40 h-12 bg-teal-400 text-white rounded-md mr-3 hover:bg-blue-800">
-          <FontAwesomeIcon icon={faPlus} /> Crear Contenido
-        </button>
-      </Link>
-    </div> */}
+    
     <div className="text-black ">
       <div className="p-2 flex">
         <h2 className="text-3xl mt-2">Gestión de Contenidos</h2>
@@ -333,9 +319,7 @@ export default function CourseSettings() {
     </div>
   </div>
 )}
-
-    </main>
-  );
+</main>
+);
 }
 
-  

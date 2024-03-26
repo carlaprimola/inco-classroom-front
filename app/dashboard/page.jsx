@@ -26,10 +26,6 @@ const UsersPage = ({ searchParams }) => {
         <UserProvider>
             <div className={styles.container}>
                 <div className={styles.top}>
-                    {/* <Search placeholder="Search for a user..." />
-                <Link href="/dashboard/users/add">
-                    <button className={styles.addButton}>Add New</button>
-                </Link> */}
                 </div>
                 <div className="bg-gray-100 min-h-screen py-16 text-black">
                     <div className="py-8 px-8 max-w-sm mx-auto bg-white rounded-xl shadow-lg space-y-2 sm:py-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-6">
