@@ -51,7 +51,7 @@ const Sidebar = ({ searchParams }) => {
                 },
                 {
                     title: "Calendario",
-                    path: "/dashboard/teams",
+                    path: "/dashboard/calendario",
                     icon: <MdCalendarMonth />,
                 },
             ],
