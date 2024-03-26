@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { fetchUsers } from "/app/lib/data.js";
 import MenuLink from "./menuLink/menuLink";
-import { MdDashboard, MdSupervisedUserCircle, MdBook, MdQueryStats, MdCalendarMonth, MdOutlineSettings, MdHelpCenter, MdLogout, MdMenu } from "react-icons/md";
-import Link from 'next/link';
 import styles from "./sidebar.module.css";
-import ButtonDashboard from '../button/ButtonDashboard';
+import { MdDashboard, MdSupervisedUserCircle, MdBook, MdQueryStats, MdCalendarMonth, MdOutlineSettings, MdHelpCenter, MdLogout } from "react-icons/md";
+import Link from 'next/link';
 
-const Sidebar = ({ searchParams, isOpen, toggleSidebar }) => {
+const Sidebar = ({ searchParams }) => {
     const [userData, setUserData] = useState(null);
     const [showModal, setShowModal] = useState(false);
     
@@ -27,6 +26,7 @@ const Sidebar = ({ searchParams, isOpen, toggleSidebar }) => {
                 console.error('Error fetching user data:', error);
             }
         };
+
         loadUserData();
     }, [searchParams]);
 
@@ -34,7 +34,7 @@ const Sidebar = ({ searchParams, isOpen, toggleSidebar }) => {
 
     const menuItems = [
         {
-            title: "",
+            title: "Pages",
             list: [
                 {
                     title: "Inicio",
@@ -55,6 +55,7 @@ const Sidebar = ({ searchParams, isOpen, toggleSidebar }) => {
             list: [
                 {
                     title: "Notas",
+                    title: "Notas",
                     path: "/dashboard/notas",
                     icon: <MdQueryStats />,
                 },
@@ -71,47 +72,29 @@ const Sidebar = ({ searchParams, isOpen, toggleSidebar }) => {
             ],
         },
     ];
-    if (isTeacher) {
-        menuItems[0].list.push({
-            title: "Cursos",
-            path: "/dashboard/cursos",
-            icon: <MdBook />,
-        });
-    } else {
-        menuItems[0].list.push({
-            title: "Mis Cursos",
-            path: "/dashboard/miscursos",
-            icon: <MdBook />,
-        });
-    }
-
-    // Si el usuario es un estudiante, ocultar el elemento "Configurar Cursos" del menú
+    
+    // Si el usuario no es un profesor, ocultar los elementos "Configurar Cursos" y "Notas" del menú
     if (!isTeacher) {
-        menuItems[0].list = menuItems[0].list.filter(item => item.title !== "Configurar Cursos");
+        menuItems[2].list = menuItems[2].list.filter(item => item.title !== "Configurar Cursos");
+        menuItems[1].list = menuItems[1].list.filter(item => item.title !== "Notas");
     }
-
-    // Función para cambiar el ancho del sidebar
-    const handleToggleWidth = () => {
-        setSidebarWidth(sidebarWidth === 'full' ? 'collapsed' : 'full');
-    };
 
     return (
-        <div className={`${styles.container} ${styles[sidebarWidth]}`}> {/* Aplica la clase condicional para cambiar el ancho */}
-            <div className="flex items-center justify-between p-4 ">
-                <span className="absolute cursor-pointer right-1 top-[-10px]">
-                    <ButtonDashboard onClick={handleToggleWidth} /> {/* Llama a la función cuando se haga clic */}
-                </span>
-                <div className="flex items-center justify-center">
-                    <div className=" flex flex-row-reverse flex-nowrap items-end">
-                        <div className={`${styles.userImage} rounded-full overflow-hidden w-24 h-24 mb-3`}>
-                            <img
-                                className="object-cover w-full h-full"
-                                src={userData ? userData.imgProfile : ''}
-                                alt={userData ? userData.name : ''}
-                                width={100}
-                                height={100}
-                            />
-                        </div>
+        <div className={styles.container}>
+            <div className="flex items-center justify-center">
+                <div className=" flex flex-row-reverse flex-nowrap items-end">
+                    <div className={`${styles.userImage} rounded-full overflow-hidden w-24 h-24 mb-3`}>
+                        <img
+                            className="object-cover w-full h-full"
+                            src={userData ? userData.imgProfile : ''}
+                            alt={userData ? userData.name : ''}
+                            width={100}
+                            height={100}
+                        />
+                    </div>
+                    <div className={`${styles.userDetail} p-4`}>
+                        <span>{userData ? userData.Nombre : 'Cargando...'}</span>
+                        <span className={styles.userTitle}>{userData ? userData.role.TipoRol : 'Cargando...'} </span>
                     </div>
                 </div>
             </div>

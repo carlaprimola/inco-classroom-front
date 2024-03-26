@@ -1,9 +1,10 @@
 .container {
     display: flex;
+    height: 100%;
 }
 
 .menu {
-    flex: 2;
+    flex: 1;
     background-color: var(--bgSoft);
     padding: 20px;
     min-height: 100vh;
