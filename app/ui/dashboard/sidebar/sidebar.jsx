@@ -112,7 +112,7 @@ const Sidebar = ({ searchParams }) => {
             </button>
             {/* Modal de confirmación */}
             {showModal && (
-                <div className="fixed z-10 inset-0 overflow-y-auto flex items-center justify-center">
+                <div className="fixed z-[2000] inset-0 overflow-y-auto flex items-center justify-center">
                     <div className="absolute inset-0 bg-gray-500 opacity-75"></div>
                     <div className="max-w-md border rounded-lg relative">
                         <div className="flex flex-col p-5 rounded-lg shadow bg-white">
