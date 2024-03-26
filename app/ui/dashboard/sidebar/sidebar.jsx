@@ -41,19 +41,19 @@ const Sidebar = ({ searchParams }) => {
                     path: "/dashboard",
                     icon: <MdDashboard />,
                 },
-                {
+                ! isTeacher ? null :{
                     title: "Usuario",
                     path: "/dashboard/usuarios",
                     icon: <MdSupervisedUserCircle />,
                 },
-        
-                
-                
-            ],
-        },
-        {
-            list: [
+                // Muestra "Mis Cursos" si es estudiante, "Configurar Cursos" si es profesor
                 {
+                    title: isTeacher ? "Configurar Cursos" : "Mis Cursos",
+                    path: isTeacher ? "/dashboard/settings" : "/dashboard/miscursos",
+                    icon: <MdBook />,
+                },
+                // Muestra "Notas" si es estudiante
+                isTeacher ? null : {
                     title: "Notas",
                     path: "/dashboard/notas",
                     icon: <MdQueryStats />,
@@ -63,20 +63,11 @@ const Sidebar = ({ searchParams }) => {
                     path: "/dashboard/calendario",
                     icon: <MdCalendarMonth />,
                 },
-                {
-                    title: isTeacher ? "Configurar Cursos" : "Mis Cursos",
-                    path: isTeacher ? "/dashboard/settings" : "/dashboard/miscursos",
-                    icon: <MdBook />,
-                },
-            ],
+            ].filter(item => item), // Filtra los elementos nulos
         },
     ];
+ 
 
-    // Si el usuario no es un profesor, ocultar los elementos "Configurar Cursos" y "Notas" del menú
-    if (!isTeacher) {
-        menuItems[0].list = menuItems[0].list.filter(item => item.title !== "Configurar Cursos");
-        menuItems[2].list = menuItems[2].list.filter(item => item.title !== "Notas");
-    }
 
     return (
         <div className={styles.container}>

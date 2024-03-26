@@ -37,7 +37,8 @@ const Login = () => {
                         <ul className="inline-flex items-center text-xl gap-10">
                             {/* List Items */}
                         </ul>
-                        <p className="text-white text-right">or use email your account</p>
+                        <p>Añade las credenciales recibidas</p>
+                        <p className="text-white text-right">por INCO academy en tu correo</p>
                         <input
                             type="email"
                             className="bg-white/50 hover:bg-white md:bg-white placeholder:text-violet-500 placeholder:text-sm text-violet-500 py-3 px-5 focus:text-violet-500 focus:outline focus:outline-offset-1 focus:outline-violet-500 rounded-md"
@@ -53,14 +54,7 @@ const Login = () => {
                             onChange={(e) => setPassword(e.target.value)}
                         />
                         {error && <p className="text-red-500">{error}</p>}
-                        <div className="text-right">
-                            <a
-                                href=""
-                                className="italic text-white/50 text-sm underline decoration-violet-500 text-violet-500 hover:text-white transition"
-                            >
-                                Forget your Password?
-                            </a>
-                        </div>
+                        
                         <ButtonLogin text="Enviar" onClick={handleLogin} className="bg-[#007AFF]"/>
                     </div>
                 </div>
